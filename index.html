@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BuySmart Enterprise - Your premier destination for household, luxury, and general goods. Shop thousands of products with free delivery and excellent customer service.">
+    <meta name="keywords" content="e-commerce, household appliances, kitchen appliances, luxury products, gadgets, supplements, online shopping">
+    <meta name="author" content="BuySmart Enterprise">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="BuySmart Enterprise - Premium E-Commerce Platform">
+    <meta property="og:description" content="Shop the best household, luxury, and general goods with unbeatable prices and fast delivery.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://buysmart.com">
+    <meta property="og:image" content="assets/images/og-image.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BuySmart Enterprise - Premium E-Commerce Platform">
+    <meta name="twitter:description" content="Shop the best household, luxury, and general goods with unbeatable prices and fast delivery.">
+    <meta name="twitter:image" content="assets/images/twitter-image.jpg">
+    
+    <title>BuySmart Enterprise - Premium E-Commerce Platform</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="assets/icons/site.webmanifest">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="css/style.css" as="style">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-container">
+                <!-- Logo -->
+                <div class="logo">
+                    <a href="index.html" aria-label="BuySmart Enterprise - Home">
+                        <img src="assets/icons/logo.png" alt="BuySmart Enterprise Logo" width="50" height="50">
+                        <span class="logo-text">BuySmart<span>Enterprise</span></span>
+                    </a>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="pages/about.html" class="nav-link">About</a></li>
+                        <li><a href="pages/categories.html" class="nav-link">Categories</a></li>
+                        <li><a href="pages/contact.html" class="nav-link">Contact</a></li>
+                    </ul>
+                    
+                    <div class="nav-actions">
+                        <!-- Cart Button -->
+                        <a href="pages/cart.html" class="cart-btn" aria-label="Shopping Cart">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.7 15.3C4.3 15.7 4.6 16.5 5.1 16.5H17M17 13V16.5M9 19.5C9.8 19.5 10.5 20.2 10.5 21S9.8 22.5 9 22.5 7.5 21.8 7.5 21 8.2 19.5 9 19.5ZM20 19.5C20.8 19.5 21.5 20.2 21.5 21S20.8 22.5 20 22.5 18.5 21.8 18.5 21 19.2 19.5 20 19.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="cart-count">0</span>
+                        </a>
+                        
+                        <!-- Mobile Menu Toggle -->
+                        <button class="mobile-menu-btn" aria-label="Toggle Mobile Menu" aria-expanded="false">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class=" <div class="hero-content">
+                   hero-text">
+                        <div class="hero-badge">Welcome to BuySmart Enterprise</div>
+                        <h1 class="hero-title">Shop Smart, <span style="color: var(--secondary-color);">Live Better</span></h1>
+                        <p class="hero-description">
+                            Discover thousands of premium products across household, luxury, and general goods. 
+                            Experience unmatched quality, competitive prices, and exceptional customer service.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#featured-products" class="btn btn-primary">Shop Now</a>
+                            <a href="pages/categories.html" class="btn btn-secondary">Browse Categories</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="assets/images/hero-shopping.jpg" alt="Shopping Experience" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Categories Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Categories</h2>
+                    <p class="section-subtitle">Explore our carefully curated product categories</p>
+                </div>
+                <div class="categories-grid" id="featured-categories">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section class="section" id="featured-products">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Products</h2>
+                    <p class="section-subtitle">Handpicked products just for you</p>
+                </div>
+                <div class="products-grid" id="featured-products-grid">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+                <div class="text-center" style="margin-top: 3rem;">
+                    <a href="pages/categories.html" class="btn btn-outline">View All Products</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why BuySmart Section -->
+        <section class="section" style="background-color: var(--gray-50);">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Why Choose BuySmart?</h2>
+                    <p class="section-subtitle">We're committed to providing you with the best shopping experience</p>
+                </div>
+                <div class="features-grid" id="why-buysmart">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Promotional Banner -->
+        <section class="promo-banner">
+            <div class="container">
+                <div class="promo-content">
+                    <h2 class="promo-title">New Year Sale - Up to 50% Off</h2>
+                    <p class="promo-description">
+                        Start the year right with incredible savings on premium products. 
+                        Limited time offer - don't miss out!
+                    </p>
+                    <a href="pages/categories.html" class="btn btn-primary">Shop Sale Items</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Indicators -->
+        <section class="section trust-section">
+            <div class="container">
+                <div class="trust-grid" id="trust-stats">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Section -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="assets/icons/logo.png" alt="BuySmart Enterprise" width="40" height="40">
+                        <span class="logo-text" style="color: var(--white); font-size: 1.25rem;">BuySmart<span>Enterprise</span></span>
+                    </div>
+                    <p class="footer-description">
+                        Your trusted partner for premium household, luxury, and general goods. 
+                        We're committed to bringing you the best products at unbeatable prices.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/about.html">About Us</a></li>
+                        <li><a href="pages/categories.html">Categories</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Customer Service -->
+                <div>
+                    <h3 class="footer-title">Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a href="pages/contact.html">Help Center</a></li>
+                        <li><a href="pages/contact.html">Track Your Order</a></li>
+                        <li><a href="pages/contact.html">Returns & Exchanges</a></li>
+                        <li><a href="pages/contact.html">Shipping Info</a></li>
+                        <li><a href="pages/contact.html">Size Guide</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="footer-title">Contact Info</h3>
+                    <ul class="footer-links">
+                        <li>📧 support@buysmart.com</li>
+                        <li>📞 +1 (555) 123-4567</li>
+                        <li>📍 123 Commerce Street<br>Business District, NY 10001</li>
+                        <li>🕒 Mon-Fri: 9AM-6PM EST</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 BuySmart Enterprise. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "BuySmart Enterprise",
+        "url": "https://buysmart.com",
+        "logo": "https://buysmart.com/assets/icons/logo.png",
+        "description": "Premium e-commerce platform for household, luxury, and general goods.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Commerce Street",
+            "addressLocality": "Business District",
+            "addressRegion": "NY",
+            "postalCode": "10001",
+            "addressCountry": "US"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-555-123-4567",
+            "contactType": "customer service",
+            "email": "support@buysmart.com"
+        },
+        "sameAs": [
+            "https://facebook.com/buysmart",
+            "https://twitter.com/buysmart",
+            "https://instagram.com/buysmart",
+            "https://linkedin.com/company/buysmart"
+        ]
+    }
+    </script>
+</body>
+</html>
