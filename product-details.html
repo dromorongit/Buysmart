@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuySmart Enterprise - Product Details</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="assets/images/Buysmartlogo.PNG" alt="BuySmart Enterprise Logo">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="categories.html">Categories</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search products...">
+                    <button id="search-button">Search</button>
+                </div>
+                <div class="cart-icon">
+                    <a href="cart.html">
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+                <div class="follow-icon">
+                    <button id="follow-button-header" class="button">Follow</button>
+                    <span id="follower-count-header">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="product-details-section">
+            <div class="product-images">
+                <div class="main-image">
+                    <div id="main-product-image" class="placeholder-image"></div>
+                </div>
+                <div class="thumbnail-gallery">
+                    <div class="placeholder-thumbnail" onclick="changeImage('')"></div>
+                    <div class="placeholder-thumbnail" onclick="changeImage('')"></div>
+                    <div class="placeholder-thumbnail" onclick="changeImage('')"></div>
+                    <div class="placeholder-thumbnail" onclick="changeImage('')"></div>
+                </div>
+            </div>
+
+            <div class="product-info">
+                <h1 id="product-title">Product Title</h1>
+                <p class="price" id="product-price">$100.00</p>
+                <p class="category" id="product-category">Category: Household Appliances</p>
+                <p class="description" id="product-description">
+                    This is a detailed description of the product. It includes all the features, specifications, and benefits of the product.
+                </p>
+                <button class="button" onclick="addToCart('1', 'Product Title', 100.00)">Add to Cart</button>
+            </div>
+        </section>
+
+        <section class="follow-buysmart">
+            <h2>Follow BuySmart</h2>
+            <p>Stay updated with our latest products and offers</p>
+            <button id="follow-button" class="button">Follow</button>
+            <p>Followers: <span id="follower-count">0</span></p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="follow-section">
+                <h3>Follow BuySmart</h3>
+                <button id="follow-button-footer" class="button">Follow</button>
+                <p>Followers: <span id="follower-count-footer">0</span></p>
+            </div>
+            <div class="social-media">
+                <h3>Connect With Us</h3>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 BuySmart Enterprise. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/follow.js"></script>
+    <script>
+        function changeImage(imageSrc) {
+            const mainImage = document.getElementById('main-product-image');
+            mainImage.src = imageSrc;
+        }
+    </script>
+</body>
+</html>

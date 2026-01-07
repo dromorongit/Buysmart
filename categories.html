@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BuySmart Enterprise - Home</title>
+    <title>BuySmart Enterprise - Categories</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -37,114 +38,59 @@
     </header>
 
     <main>
-        <section class="hero-banner">
-            <h1>Welcome to BuySmart Enterprise</h1>
-            <p>Your one-stop shop for household, general, and luxury goods</p>
-            <button class="shop-now-btn">Shop Now</button>
-        </section>
-
-        <section class="category-shortcuts">
-            <h2 class="centered-heading">Shop by Category</h2>
-            <div class="category-grid-four">
+        <section class="categories-section">
+            <div class="categories-header">
+                <h1>Shop by Category</h1>
+                <p>Explore our wide range of products across various categories</p>
+            </div>
+            <div class="category-grid">
                 <div class="category-card">
                     <a href="household-appliances.html">
+                        <img src="assets/icons/household-icon.png" alt="Household Appliances">
                         <h3>Household Appliances</h3>
                     </a>
                 </div>
                 <div class="category-card">
                     <a href="kitchen-appliances.html">
+                        <img src="assets/icons/kitchen-icon.png" alt="Kitchen Appliances">
                         <h3>Kitchen Appliances</h3>
                     </a>
                 </div>
                 <div class="category-card">
                     <a href="luxury-products.html">
+                        <img src="assets/icons/luxury-icon.png" alt="Luxury Products">
                         <h3>Luxury Products</h3>
                     </a>
                 </div>
                 <div class="category-card">
                     <a href="men-products.html">
+                        <img src="assets/icons/men-icon.png" alt="Men Products">
                         <h3>Men Products</h3>
                     </a>
                 </div>
                 <div class="category-card">
                     <a href="women-products.html">
+                        <img src="assets/icons/women-icon.png" alt="Women Products">
                         <h3>Women Products</h3>
                     </a>
                 </div>
                 <div class="category-card">
                     <a href="supplements.html">
+                        <img src="assets/icons/supplements-icon.png" alt="Supplements">
                         <h3>Supplements</h3>
                     </a>
                 </div>
                 <div class="category-card">
                     <a href="gadgets.html">
+                        <img src="assets/icons/gadgets-icon.png" alt="Gadgets">
                         <h3>Gadgets</h3>
                     </a>
                 </div>
                 <div class="category-card">
                     <a href="general-goods.html">
+                        <img src="assets/icons/general-icon.png" alt="General Goods">
                         <h3>General Goods</h3>
                     </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="featured-products">
-            <h2 class="centered-heading">Featured Products</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <h3>Product 1</h3>
-                    <p class="price">$100.00</p>
-                    <button class="button" onclick="addToCart('1', 'Product 1', 100.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <h3>Product 2</h3>
-                    <p class="price">$150.00</p>
-                    <button class="button" onclick="addToCart('2', 'Product 2', 150.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <h3>Product 3</h3>
-                    <p class="price">$200.00</p>
-                    <button class="button" onclick="addToCart('3', 'Product 3', 200.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <h3>Product 4</h3>
-                    <p class="price">$250.00</p>
-                    <button class="button" onclick="addToCart('4', 'Product 4', 250.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="popular-products">
-            <h2 class="centered-heading">Popular Products</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <h3>Product 5</h3>
-                    <p class="price">$300.00</p>
-                    <button class="button" onclick="addToCart('5', 'Product 5', 300.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <h3>Product 6</h3>
-                    <p class="price">$350.00</p>
-                    <button class="button" onclick="addToCart('6', 'Product 6', 350.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <h3>Product 7</h3>
-                    <p class="price">$400.00</p>
-                    <button class="button" onclick="addToCart('7', 'Product 7', 400.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <h3>Product 8</h3>
-                    <p class="price">$450.00</p>
-                    <button class="button" onclick="addToCart('8', 'Product 8', 450.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
                 </div>
             </div>
         </section>
@@ -154,24 +100,6 @@
             <p>Stay updated with our latest products and offers</p>
             <button id="follow-button" class="button">Follow</button>
             <p>Followers: <span id="follower-count">0</span></p>
-        </section>
-
-        <section class="trust-badges">
-            <h2 class="centered-heading">Why Choose BuySmart?</h2>
-            <div class="badges-grid">
-                <div class="badge">
-                    <h3>Quality Products</h3>
-                </div>
-                <div class="badge">
-                    <h3>Fast Shipping</h3>
-                </div>
-                <div class="badge">
-                    <h3>Secure Payment</h3>
-                </div>
-                <div class="badge">
-                    <h3>Customer Support</h3>
-                </div>
-            </div>
         </section>
     </main>
 

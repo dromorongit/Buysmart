@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuySmart Enterprise - Cart</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="assets/images/Buysmartlogo.PNG" alt="BuySmart Enterprise Logo">
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="categories.html">Categories</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search products...">
+                    <button id="search-button">Search</button>
+                </div>
+                <div class="cart-icon">
+                    <a href="cart.html">
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+                <div class="follow-icon">
+                    <button id="follow-button-header" class="button">Follow</button>
+                    <span id="follower-count-header">0</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cart-section">
+            <div class="cart-header">
+                <h1>Your Shopping Cart</h1>
+                <p>Review your items and proceed to checkout</p>
+            </div>
+            <div id="cart-items">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+            <div class="cart-summary">
+                <h2>Cart Summary</h2>
+                <p>Subtotal: $<span id="cart-subtotal">0.00</span></p>
+                <p>Total: $<span id="cart-total">0.00</span></p>
+                <a href="checkout.html" class="button">Proceed to Checkout</a>
+            </div>
+        </section>
+
+        <section class="follow-buysmart">
+            <h2>Follow BuySmart</h2>
+            <p>Stay updated with our latest products and offers</p>
+            <button id="follow-button" class="button">Follow</button>
+            <p>Followers: <span id="follower-count">0</span></p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="follow-section">
+                <h3>Follow BuySmart</h3>
+                <button id="follow-button-footer" class="button">Follow</button>
+                <p>Followers: <span id="follower-count-footer">0</span></p>
+            </div>
+            <div class="social-media">
+                <h3>Connect With Us</h3>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 BuySmart Enterprise. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/follow.js"></script>
+</body>
+</html>
