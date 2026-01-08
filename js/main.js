@@ -3,8 +3,10 @@ console.log("BuySmart Enterprise E-Commerce Website");
 
 // Mobile Navigation Toggle
 function toggleMobileNav() {
-    const nav = document.querySelector('nav');
-    nav.classList.toggle('mobile-nav-active');
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
 }
 
 // Search Functionality
