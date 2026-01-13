@@ -1,8 +1,8 @@
 // Follow JavaScript File
-console.log("BuySmart Enterprise Follow System");
+console.log("Buysmart Enterprise Follow System");
 
 // Follow Functions
-function followBuySmart() {
+function followBuysmart() {
     // Retrieve the current follower count from LocalStorage
     let followerCount = parseInt(localStorage.getItem('followerCount')) || 0;
     
@@ -22,9 +22,9 @@ function followBuySmart() {
         // Update the follower count in the UI
         updateFollowerCount();
         
-        console.log(`User followed BuySmart. Total followers: ${followerCount}`);
+        console.log(`User followed Buysmart. Total followers: ${followerCount}`);
     } else {
-        console.log("User has already followed BuySmart.");
+        console.log("User has already followed Buysmart.");
     }
 }
 
@@ -50,7 +50,7 @@ function updateFollowerCount() {
 
 // Initialize the follow system
 function initFollow() {
-    console.log("Initializing BuySmart Enterprise Follow System");
+    console.log("Initializing Buysmart Enterprise Follow System");
     
     // Update the follower count when the page loads
     updateFollowerCount();
@@ -58,13 +58,13 @@ function initFollow() {
     // Add event listener to the follow button
     const followButton = document.getElementById('follow-button');
     if (followButton) {
-        followButton.addEventListener('click', followBuySmart);
+        followButton.addEventListener('click', followBuysmart);
     }
     
     // Add event listener to the follow button in the header
     const followButtonHeader = document.getElementById('follow-button-header');
     if (followButtonHeader) {
-        followButtonHeader.addEventListener('click', followBuySmart);
+        followButtonHeader.addEventListener('click', followBuysmart);
     }
 }
 

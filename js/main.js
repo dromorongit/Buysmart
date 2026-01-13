@@ -1,5 +1,5 @@
 // Main JavaScript File
-console.log("BuySmart Enterprise E-Commerce Website");
+console.log("Buysmart Enterprise E-Commerce Website");
 
 // Mobile Navigation Toggle
 function toggleMobileNav() {
@@ -28,7 +28,7 @@ function searchProducts() {
 
 // Initialize the website
 function init() {
-    console.log("Initializing BuySmart Enterprise Website");
+    console.log("Initializing Buysmart Enterprise Website");
     
     // Add event listeners
     const mobileNavToggle = document.getElementById('mobile-nav-toggle');

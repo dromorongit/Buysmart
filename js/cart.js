@@ -1,5 +1,5 @@
 // Cart JavaScript File
-console.log("BuySmart Enterprise Cart System");
+console.log("Buysmart Enterprise Cart System");
 
 // Cart Functions
 function addToCart(productId, productName, productPrice) {
@@ -60,7 +60,7 @@ function removeFromCart(productId) {
 
 // Initialize the cart system
 function initCart() {
-    console.log("Initializing BuySmart Enterprise Cart System");
+    console.log("Initializing Buysmart Enterprise Cart System");
     
     // Update the cart count when the page loads
     updateCartCount();
