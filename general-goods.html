@@ -41,6 +41,13 @@
             </div>
         </nav>
     </header>
+    
+    <!-- Promotional Banner for General Goods -->
+    <section class="promo-banner">
+        <h2>🛍️ Everything You Need! 🛍️</h2>
+        <p>Daily essentials at unbeatable prices</p>
+        <button class="btn-modern" onclick="window.location.href='categories.html'">EXPLORE ALL CATEGORIES</button>
+    </section>
 
     <main>
         <section class="category-section">
@@ -48,31 +55,42 @@
             <div class="product-grid">
                 <div class="product-card">
                     <h3>General Good 1</h3>
-                    <p class="price">$10.00</p>
+                    <p class="price">GHS 10.00</p>
                     <button class="button" onclick="addToCart('801', 'General Good 1', 10.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
                 <div class="product-card">
                     <h3>General Good 2</h3>
-                    <p class="price">$20.00</p>
+                    <p class="price">GHS 20.00</p>
                     <button class="button" onclick="addToCart('802', 'General Good 2', 20.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
                 <div class="product-card">
                     <h3>General Good 3</h3>
-                    <p class="price">$30.00</p>
+                    <p class="price">GHS 30.00</p>
                     <button class="button" onclick="addToCart('803', 'General Good 3', 30.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
                 <div class="product-card">
                     <h3>General Good 4</h3>
-                    <p class="price">$40.00</p>
+                    <p class="price">GHS 40.00</p>
                     <button class="button" onclick="addToCart('804', 'General Good 4', 40.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
             </div>
         </section>
 
+        <!-- Advert Section for General Goods -->
+        <section class="advert-container">
+            <div class="advert-banner top-advert">
+                <div class="advert-content">
+                    <h3>🏷️ EVERYDAY SAVINGS! 🏷️</h3>
+                    <p>Bulk discounts on all general goods - save more when you buy more!</p>
+                    <button class="button advert-btn" onclick="window.location.href='checkout.html'">SHOP NOW</button>
+                </div>
+            </div>
+        </section>
+        
         <section class="follow-buysmart">
             <h2>Follow Buysmart</h2>
             <p>Stay updated with our latest products and offers</p>
@@ -112,6 +130,9 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+    
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/follow.js"></script>

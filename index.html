@@ -41,12 +41,111 @@
             </div>
         </nav>
     </header>
+    
+    <!-- Promotional Banner -->
+    <section class="promo-banner">
+        <h2>🔥 LIMITED TIME OFFER! 🔥</h2>
+        <p>Get 20% OFF on all products this week! Use code: BUYSMART20 at checkout</p>
+        <button class="btn-modern" onclick="window.location.href='categories.html'">SHOP NOW</button>
+    </section>
+    
+    <!-- Carousel and Advert Sections -->
+    <section class="carousel-advert-section">
+        <div class="container">
+            <div class="carousel-container">
+                <!-- Left Carousel -->
+                <div class="image-carousel left-carousel">
+                    <div class="carousel-slide active">
+                        <img src="https://via.placeholder.com/300x200/ff0000/ffffff?text=Product+1" alt="Featured Product">
+                        <div class="carousel-caption">
+                            <h4>Premium Gadgets</h4>
+                            <p>Starting at GHS 100</p>
+                            <button class="button" onclick="window.location.href='gadgets.html'">Shop Now</button>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://via.placeholder.com/300x200/0000ff/ffffff?text=Product+2" alt="Featured Product">
+                        <div class="carousel-caption">
+                            <h4>Luxury Appliances</h4>
+                            <p>Exclusive Deals</p>
+                            <button class="button" onclick="window.location.href='luxury-products.html'">Explore</button>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://via.placeholder.com/300x200/00ff00/ffffff?text=Product+3" alt="Featured Product">
+                        <div class="carousel-caption">
+                            <h4>Household Essentials</h4>
+                            <p>Up to 30% OFF</p>
+                            <button class="button" onclick="window.location.href='household-appliances.html'">Shop Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Carousel -->
+                <div class="image-carousel right-carousel">
+                    <div class="carousel-slide active">
+                        <img src="https://via.placeholder.com/300x200/ffcc00/333333?text=Special+1" alt="Special Offer">
+                        <div class="carousel-caption">
+                            <h4>Men's Collection</h4>
+                            <p>New Arrivals</p>
+                            <button class="button" onclick="window.location.href='men-products.html'">View More</button>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://via.placeholder.com/300x200/ff6b35/ffffff?text=Special+2" alt="Special Offer">
+                        <div class="carousel-caption">
+                            <h4>Women's Fashion</h4>
+                            <p>Seasonal Sale</p>
+                            <button class="button" onclick="window.location.href='women-products.html'">Shop Now</button>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://via.placeholder.com/300x200/667eea/ffffff?text=Special+3" alt="Special Offer">
+                        <div class="carousel-caption">
+                            <h4>Health Supplements</h4>
+                            <p>Buy 2 Get 1 Free</p>
+                            <button class="button" onclick="window.location.href='supplements.html'">Shop Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Advert Sections -->
+            <div class="advert-container">
+                <!-- Top Advert Banner -->
+                <div class="advert-banner top-advert">
+                    <div class="advert-content">
+                        <h3>🔥 FLASH SALE! 🔥</h3>
+                        <p>Get 50% OFF on selected products today only!</p>
+                        <div class="countdown-timer" id="flashSaleTimer">
+                            <span id="hours">04</span>:<span id="minutes">30</span>:<span id="seconds">15</span>
+                        </div>
+                        <button class="button advert-btn" onclick="window.location.href='categories.html'">SHOP FLASH SALE</button>
+                    </div>
+                </div>
+                
+                <!-- Bottom Advert Banner -->
+                <div class="advert-banner bottom-advert">
+                    <div class="advert-content">
+                        <h3>💰 EXCLUSIVE DEALS 💰</h3>
+                        <p>Members get additional 10% OFF on all orders!</p>
+                        <button class="button advert-btn" onclick="window.location.href='contact.html'">JOIN NOW</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <main>
         <section class="hero-banner">
-            <h1>Welcome to Buysmart Enterprise</h1>
-            <p>Your one-stop shop for household, general, and luxury goods</p>
-            <button class="shop-now-btn">Shop Now</button>
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to Buysmart Enterprise</h1>
+                <p class="hero-subtitle">Your one-stop shop for household, general, and luxury goods</p>
+                <div class="hero-buttons">
+                    <button class="hero-btn-primary" onclick="window.location.href='categories.html'">Shop Now</button>
+                    <button class="hero-btn-secondary" onclick="window.location.href='about.html'">Learn More</button>
+                </div>
+            </div>
         </section>
 
         <section class="category-shortcuts">
@@ -99,26 +198,31 @@
             <h2 class="centered-heading">Featured Products</h2>
             <div class="product-grid">
                 <div class="product-card">
+                    <span class="badge-sale">SALE</span>
+                    <span class="badge-featured">FEATURED</span>
                     <h3>Product 1</h3>
-                    <p class="price">$100.00</p>
+                    <p class="price">GHS 100.00</p>
                     <button class="button" onclick="addToCart('1', 'Product 1', 100.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
                 <div class="product-card">
+                    <span class="badge-new">NEW</span>
                     <h3>Product 2</h3>
-                    <p class="price">$150.00</p>
+                    <p class="price">GHS 150.00</p>
                     <button class="button" onclick="addToCart('2', 'Product 2', 150.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
                 <div class="product-card">
+                    <span class="badge-sale">SALE</span>
                     <h3>Product 3</h3>
-                    <p class="price">$200.00</p>
+                    <p class="price">GHS 200.00</p>
                     <button class="button" onclick="addToCart('3', 'Product 3', 200.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
                 <div class="product-card">
+                    <span class="badge-featured">FEATURED</span>
                     <h3>Product 4</h3>
-                    <p class="price">$250.00</p>
+                    <p class="price">GHS 250.00</p>
                     <button class="button" onclick="addToCart('4', 'Product 4', 250.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
@@ -129,32 +233,61 @@
             <h2 class="centered-heading">Popular Products</h2>
             <div class="product-grid">
                 <div class="product-card">
+                    <span class="badge-new">NEW</span>
+                    <span class="badge-sale">SALE</span>
                     <h3>Product 5</h3>
-                    <p class="price">$300.00</p>
+                    <p class="price">GHS 300.00</p>
                     <button class="button" onclick="addToCart('5', 'Product 5', 300.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
                 <div class="product-card">
+                    <span class="badge-featured">FEATURED</span>
                     <h3>Product 6</h3>
-                    <p class="price">$350.00</p>
+                    <p class="price">GHS 350.00</p>
                     <button class="button" onclick="addToCart('6', 'Product 6', 350.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
                 <div class="product-card">
+                    <span class="badge-new">NEW</span>
                     <h3>Product 7</h3>
-                    <p class="price">$400.00</p>
+                    <p class="price">GHS 400.00</p>
                     <button class="button" onclick="addToCart('7', 'Product 7', 400.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
                 <div class="product-card">
+                    <span class="badge-sale">SALE</span>
+                    <span class="badge-featured">FEATURED</span>
                     <h3>Product 8</h3>
-                    <p class="price">$450.00</p>
+                    <p class="price">GHS 450.00</p>
                     <button class="button" onclick="addToCart('8', 'Product 8', 450.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
             </div>
         </section>
 
+        <!-- Testimonial Section -->
+        <section class="testimonial-section">
+            <div class="testimonial-container">
+                <div class="testimonial-quote">
+                    Buysmart Enterprise has completely transformed my shopping experience! The quality of products and customer service is unmatched.
+                </div>
+                <div class="testimonial-author">Sarah Johnson</div>
+                <div class="testimonial-role">Satisfied Customer, Accra</div>
+            </div>
+        </section>
+        
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="newsletter-container">
+                <h2 class="newsletter-title">📩 Subscribe to Our Newsletter</h2>
+                <p class="newsletter-subtitle">Get exclusive deals, product updates, and special offers delivered to your inbox!</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn-modern">SUBSCRIBE</button>
+                </form>
+            </div>
+        </section>
+        
         <section class="follow-buysmart">
             <h2>Follow Buysmart</h2>
             <p>Stay updated with our latest products and offers</p>
@@ -212,6 +345,9 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+    
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/follow.js"></script>

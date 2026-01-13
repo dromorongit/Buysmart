@@ -1036,3 +1036,984 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* Modern Enhancements for Buysmart Enterprise */
+
+/* Promotional Banner Styles */
+.promo-banner {
+    background: linear-gradient(135deg, #ff0000, #ffcc00);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    margin: 2rem 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    animation: slide 3s linear infinite;
+}
+
+@keyframes slide {
+    from { background-position: 0% 0%; }
+    to { background-position: 100% 100%; }
+}
+
+.promo-banner h2 {
+    margin: 0;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.promo-banner p {
+    margin: 0.5rem 0 0;
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.promo-banner .btn-modern {
+    margin-top: 1rem;
+    background: white;
+    color: #ff0000;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.promo-banner .btn-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Testimonial Section */
+.testimonial-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+}
+
+.testimonial-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+/* Carousel and Advert Section Styles */
+.carousel-advert-section {
+    padding: 3rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.carousel-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.image-carousel {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+.left-carousel {
+    border-top: 4px solid #ff0000;
+}
+
+.right-carousel {
+    border-top: 4px solid #ffcc00;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%);
+}
+
+.carousel-caption h4 {
+    margin: 0 0 0.5rem;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.carousel-caption p {
+    margin: 0 0 1rem;
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.carousel-caption .button {
+    margin-top: auto;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.advert-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.advert-banner {
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Hero Section Text Animations */
+.hero-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroTitleAnimation 0.8s ease-out 0.2s forwards;
+}
+
+.hero-subtitle {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroSubtitleAnimation 0.8s ease-out 0.4s forwards;
+}
+
+.shop-now-btn {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroButtonAnimation 0.8s ease-out 0.6s forwards;
+}
+
+@keyframes heroTitleAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroSubtitleAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroButtonAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced Hero Section Styles */
+.hero-banner {
+    padding: 6rem 2rem;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    width: 100%;
+    left: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-btn-primary {
+    background: white;
+    color: #ff0000;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-btn-primary:hover {
+    background: #ffcc00;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hero-btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero-btn-secondary:hover {
+    background: white;
+    color: #ff0000;
+    transform: translateY(-3px);
+}
+
+/* Hero Background Animation */
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+    animation: heroBackgroundAnimation 10s linear infinite;
+}
+
+@keyframes heroBackgroundAnimation {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(100px); }
+}
+
+/* Text Animation Classes */
+.text-animate {
+    display: inline-block;
+    opacity: 0;
+    animation: textFadeIn 0.6s ease-out forwards;
+}
+
+.text-animate:nth-child(1) { animation-delay: 0.1s; }
+.text-animate:nth-child(2) { animation-delay: 0.2s; }
+.text-animate:nth-child(3) { animation-delay: 0.3s; }
+.text-animate:nth-child(4) { animation-delay: 0.4s; }
+.text-animate:nth-child(5) { animation-delay: 0.5s; }
+.text-animate:nth-child(6) { animation-delay: 0.6s; }
+.text-animate:nth-child(7) { animation-delay: 0.7s; }
+.text-animate:nth-child(8) { animation-delay: 0.8s; }
+.text-animate:nth-child(9) { animation-delay: 0.9s; }
+.text-animate:nth-child(10) { animation-delay: 1.0s; }
+
+@keyframes textFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Character Animation for Hero Titles */
+.hero-title.char-animate span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px) rotateX(90deg);
+    animation: charFadeIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes charFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+/* Typewriter Effect */
+.typewriter {
+    overflow: hidden;
+    border-right: 2px solid #fff;
+    white-space: nowrap;
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #fff; }
+}
+
+/* Responsive Hero Animations */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .hero-btn-primary,
+    .hero-btn-secondary {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+.advert-banner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.top-advert {
+    background: linear-gradient(135deg, #ff0000, #ff6b35);
+    color: white;
+}
+
+.bottom-advert {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.advert-content {
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.advert-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: slide 3s linear infinite;
+}
+
+.advert-content h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.advert-content p {
+    margin: 0 0 1rem;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.countdown-timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.countdown-timer span {
+    background: rgba(0,0,0,0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin: 0 0.2rem;
+}
+
+.advert-btn {
+    background: white;
+    color: #ff0000;
+    border-radius: 25px;
+    padding: 0.8rem 1.5rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.advert-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Carousel Navigation Arrows */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.8);
+    border: none;
+    color: #333;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.carousel-nav:hover {
+    background: #ff0000;
+    color: white;
+}
+
+.carousel-nav.prev {
+    left: 10px;
+}
+
+.carousel-nav.next {
+    right: 10px;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+    z-index: 10;
+}
+
+.carousel-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicator.active {
+    background: #ff0000;
+}
+
+/* Responsive Carousel and Advert Sections */
+@media (max-width: 768px) {
+    .carousel-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .image-carousel {
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 2rem;
+    }
+    
+    .advert-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .advert-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .advert-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Animation for Carousel */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.carousel-slide {
+    animation: fadeInSlide 1s ease-in-out;
+}
+
+/* Enhanced Product Card Styles */
+.product-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover::before {
+    opacity: 1;
+}
+
+/* Enhanced Button Styles */
+.button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Enhanced Badge Styles */
+.badge-sale, .badge-new, .badge-featured {
+    position: absolute;
+    top: 10px;
+    z-index: 10;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.badge-sale {
+    left: 10px;
+    background: #ff0000;
+    color: white;
+}
+
+.badge-new {
+    left: 10px;
+    background: #4CAF50;
+    color: white;
+    margin-top: 30px;
+}
+
+.badge-featured {
+    right: 10px;
+    background: #ffcc00;
+    color: #333;
+}
+
+.testimonial-quote {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.testimonial-quote::before {
+    content: '"';
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    left: -2rem;
+    top: -1rem;
+}
+
+.testimonial-author {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.testimonial-role {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    background: linear-gradient(135deg, #ff0000, #ff6b35);
+    color: white;
+    padding: 3rem 0;
+}
+
+.newsletter-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.newsletter-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.newsletter-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+}
+
+.newsletter-form button {
+    padding: 1rem 2rem;
+    background: white;
+    color: #ff0000;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-top:hover {
+    background: #ff6b35;
+    transform: translateY(-3px);
+}
+
+.back-to-top.show {
+    display: flex;
+}
+
+/* Animation Classes */
+.fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Enhanced Product Card Hover Effects */
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Enhanced Button Styles */
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Badge Styles for Promotions */
+.badge-sale {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: #ff0000;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.badge-new {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: #4CAF50;
+    color: white;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.badge-featured {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: #ffcc00;
+    color: #333;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Enhanced Hero Banner */
+.hero-banner {
+    background: linear-gradient(135deg, #ff0000, #ffcc00);
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-banner h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.hero-banner p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.shop-now-btn {
+    padding: 1rem 2rem;
+    background-color: #fff;
+    color: #ff0000;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.shop-now-btn:hover {
+    background-color: #ffcc00;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced Footer */
+footer {
+    background: linear-gradient(135deg, #333, #000);
+    color: white;
+    padding: 3rem 0 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.quick-links h3, .follow-section h3, .social-media h3 {
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.quick-links h3::after, .follow-section h3::after, .social-media h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #ff0000;
+}
+
+.quick-links a, .social-media a {
+    color: #ccc;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.quick-links a:hover, .social-media a:hover {
+    color: #ff0000;
+    transform: translateX(5px);
+}
+
+.social-icons a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #ff0000;
+    transform: translateY(-3px);
+}
+
+.copyright {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #555;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+    .promo-banner h2 {
+        font-size: 1.5rem;
+    }
+    
+    .promo-banner p {
+        font-size: 1rem;
+    }
+    
+    .testimonial-quote {
+        font-size: 1.2rem;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form button {
+        width: 100%;
+    }
+}

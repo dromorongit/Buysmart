@@ -40,6 +40,13 @@
             </div>
         </nav>
     </header>
+    
+    <!-- Promotional Banner for Men's Products -->
+    <section class="promo-banner">
+        <h2>👔 Style for the Modern Man! 👔</h2>
+        <p>Premium men's products at unbeatable prices</p>
+        <button class="btn-modern" onclick="window.location.href='categories.html'">EXPLORE ALL CATEGORIES</button>
+    </section>
 
     <main>
         <section class="category-section">
@@ -47,31 +54,42 @@
             <div class="product-grid">
                 <div class="product-card">
                     <h3>Men Product 1</h3>
-                    <p class="price">$50.00</p>
+                    <p class="price">GHS 50.00</p>
                     <button class="button" onclick="addToCart('401', 'Men Product 1', 50.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
                 <div class="product-card">
                     <h3>Men Product 2</h3>
-                    <p class="price">$75.00</p>
+                    <p class="price">GHS 75.00</p>
                     <button class="button" onclick="addToCart('402', 'Men Product 2', 75.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
                 <div class="product-card">
                     <h3>Men Product 3</h3>
-                    <p class="price">$100.00</p>
+                    <p class="price">GHS 100.00</p>
                     <button class="button" onclick="addToCart('403', 'Men Product 3', 100.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
                 <div class="product-card">
                     <h3>Men Product 4</h3>
-                    <p class="price">$125.00</p>
+                    <p class="price">GHS 125.00</p>
                     <button class="button" onclick="addToCart('404', 'Men Product 4', 125.00)">Add to Cart</button>
                     <a href="product-details.html" class="button">View More</a>
                 </div>
             </div>
         </section>
 
+        <!-- Advert Section for Men's Products -->
+        <section class="advert-container">
+            <div class="advert-banner top-advert">
+                <div class="advert-content">
+                    <h3>👟 MEN'S SPECIAL! 👟</h3>
+                    <p>Buy 2 men's products, get 10% OFF on the third!</p>
+                    <button class="button advert-btn" onclick="window.location.href='checkout.html'">SHOP NOW</button>
+                </div>
+            </div>
+        </section>
+        
         <section class="follow-buysmart">
             <h2>Follow Buysmart</h2>
             <p>Stay updated with our latest products and offers</p>
@@ -111,6 +129,9 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+    
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/follow.js"></script>

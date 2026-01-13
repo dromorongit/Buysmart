@@ -41,6 +41,13 @@
             </div>
         </nav>
     </header>
+    
+    <!-- Promotional Banner for Cart Page -->
+    <section class="promo-banner">
+        <h2>🛒 Your Cart Awaits! 🛒</h2>
+        <p>Complete your purchase and enjoy fast, reliable delivery</p>
+        <button class="btn-modern" onclick="window.location.href='categories.html'">CONTINUE SHOPPING</button>
+    </section>
 
     <main>
         <section class="cart-section">
@@ -53,12 +60,23 @@
             </div>
             <div class="cart-summary">
                 <h2>Cart Summary</h2>
-                <p>Subtotal: $<span id="cart-subtotal">0.00</span></p>
-                <p>Total: $<span id="cart-total">0.00</span></p>
+                <p>Subtotal: GHS <span id="cart-subtotal">0.00</span></p>
+                <p>Total: GHS <span id="cart-total">0.00</span></p>
                 <a href="checkout.html" class="button">Proceed to Checkout</a>
             </div>
         </section>
 
+        <!-- Advert Section for Cart Page -->
+        <section class="advert-container">
+            <div class="advert-banner top-advert">
+                <div class="advert-content">
+                    <h3>🎁 FREE SHIPPING! 🎁</h3>
+                    <p>Get free delivery on all orders over GHS 500!</p>
+                    <button class="button advert-btn" onclick="window.location.href='categories.html'">ADD MORE ITEMS</button>
+                </div>
+            </div>
+        </section>
+        
         <section class="follow-buysmart">
             <h2>Follow Buysmart</h2>
             <p>Stay updated with our latest products and offers</p>
@@ -98,6 +116,9 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+    
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/follow.js"></script>

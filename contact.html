@@ -41,12 +41,23 @@
             </div>
         </nav>
     </header>
+    
+    <!-- Promotional Banner for Contact Page -->
+    <section class="promo-banner">
+        <h2>📞 Get in Touch with Us! 📞</h2>
+        <p>Our customer service team is ready to assist you 24/7</p>
+        <button class="btn-modern" onclick="window.location.href='tel:+233551234567'">CALL NOW</button>
+    </section>
 
     <main>
-        <section class="contact-section">
-            <div class="contact-header">
-                <h1>Contact Us</h1>
-                <p>We'd love to hear from you! Whether you have a question about our products, need assistance with an order, or just want to share your feedback, feel free to reach out to us.</p>
+        <section class="hero-banner">
+            <div class="hero-content">
+                <h1 class="hero-title">Contact Us</h1>
+                <p class="hero-subtitle">We'd love to hear from you! Whether you have a question about our products, need assistance with an order, or just want to share your feedback, feel free to reach out to us.</p>
+                <div class="hero-buttons">
+                    <button class="hero-btn-primary" onclick="window.location.href='tel:+233551234567'">Call Now</button>
+                    <button class="hero-btn-secondary" onclick="window.location.href='about.html'">About Us</button>
+                </div>
             </div>
         </section>
 
@@ -89,6 +100,29 @@
             </ul>
         </section>
 
+        <!-- Testimonial Section -->
+        <section class="testimonial-section">
+            <div class="testimonial-container">
+                <div class="testimonial-quote">
+                    The customer service at Buysmart Enterprise is exceptional! They helped me find exactly what I needed and the delivery was lightning fast.
+                </div>
+                <div class="testimonial-author">Kwame Mensah</div>
+                <div class="testimonial-role">Happy Customer, Kumasi</div>
+            </div>
+        </section>
+        
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="newsletter-container">
+                <h2 class="newsletter-title">📩 Stay Connected</h2>
+                <p class="newsletter-subtitle">Subscribe to get the latest updates, promotions, and exclusive offers!</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn-modern">SUBSCRIBE</button>
+                </form>
+            </div>
+        </section>
+        
         <section class="follow-buysmart">
             <h2>Follow Buysmart</h2>
             <p>Stay updated with our latest products and offers</p>
@@ -128,6 +162,9 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+    
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/follow.js"></script>

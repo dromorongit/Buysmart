@@ -41,6 +41,13 @@
             </div>
         </nav>
     </header>
+    
+    <!-- Promotional Banner for Checkout Page -->
+    <section class="promo-banner">
+        <h2>🛒 Almost There! 🛒</h2>
+        <p>Complete your purchase to enjoy premium products and fast delivery</p>
+        <button class="btn-modern" onclick="window.location.href='cart.html'">REVIEW CART</button>
+    </section>
 
     <main>
         <section class="checkout-section">
@@ -84,9 +91,9 @@
                 <div id="order-items">
                     <!-- Order items will be dynamically inserted here -->
                 </div>
-                <p>Subtotal: $<span id="order-subtotal">0.00</span></p>
-                <p>Shipping: $<span id="order-shipping">0.00</span></p>
-                <p>Total: $<span id="order-total">0.00</span></p>
+                <p>Subtotal: GHS <span id="order-subtotal">0.00</span></p>
+                <p>Shipping: GHS <span id="order-shipping">0.00</span></p>
+                <p>Total: GHS <span id="order-total">0.00</span></p>
             </div>
         </section>
 
@@ -129,6 +136,9 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+    
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/follow.js"></script>
