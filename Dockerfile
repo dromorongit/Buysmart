@@ -12,10 +12,19 @@ COPY backend/package*.json ./
 # Install dependencies
 RUN npm install --production
 
-# Copy source files
-COPY backend ./
+# Copy source files from backend directory
+COPY backend/config ./config
+COPY backend/controllers ./controllers
+COPY backend/middleware ./middleware
+COPY backend/models ./models
+COPY backend/routes ./routes
+COPY backend/views ./views
+COPY backend/public ./public
+COPY backend/uploads ./uploads
+COPY backend/.env ./
+COPY backend/server.js ./
 
-# Create necessary directories
+# Create necessary directories if they don't exist
 RUN mkdir -p uploads && mkdir -p public/images
 
 # Build step (if needed for frontend assets)
