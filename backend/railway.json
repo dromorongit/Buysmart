@@ -1,0 +1,44 @@
+{
+  "name": "buysmart-admin",
+  "description": "BuySmart Product Management System - Admin Dashboard",
+  "version": "1.0.0",
+  "environment": {
+    "node": "18.x",
+    "npm": "9.x"
+  },
+  "services": [
+    {
+      "name": "backend",
+      "type": "node",
+      "start": "npm start",
+      "build": "npm install",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": "3000"
+      },
+      "healthcheck": {
+        "path": "/api/health",
+        "interval": 30,
+        "timeout": 5
+      }
+    }
+  ],
+  "domains": [
+    {
+      "name": "buysmart-admin",
+      "type": "railway"
+    }
+  ],
+  "plugins": {
+    "mongodb": {
+      "enabled": true,
+      "version": "6.0"
+    }
+  },
+  "volumes": [
+    {
+      "name": "uploads",
+      "path": "/app/backend/uploads"
+    }
+  ]
+}

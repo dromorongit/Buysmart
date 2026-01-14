@@ -211,72 +211,17 @@
 
         <section class="featured-products">
             <h2 class="centered-heading">Featured Products</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <span class="badge-sale">SALE</span>
-                    <span class="badge-featured">FEATURED</span>
-                    <h3>Product 1</h3>
-                    <p class="price">GHS 100.00</p>
-                    <button class="button" onclick="addToCart('1', 'Product 1', 100.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <span class="badge-new">NEW</span>
-                    <h3>Product 2</h3>
-                    <p class="price">GHS 150.00</p>
-                    <button class="button" onclick="addToCart('2', 'Product 2', 150.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <span class="badge-sale">SALE</span>
-                    <h3>Product 3</h3>
-                    <p class="price">GHS 200.00</p>
-                    <button class="button" onclick="addToCart('3', 'Product 3', 200.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <span class="badge-featured">FEATURED</span>
-                    <h3>Product 4</h3>
-                    <p class="price">GHS 250.00</p>
-                    <button class="button" onclick="addToCart('4', 'Product 4', 250.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
+            <div class="product-grid" id="featured-products-container">
+                <!-- Products will be loaded dynamically from API -->
+                <div class="loading-spinner">Loading featured products...</div>
             </div>
         </section>
 
         <section class="popular-products">
             <h2 class="centered-heading">Popular Products</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <span class="badge-new">NEW</span>
-                    <span class="badge-sale">SALE</span>
-                    <h3>Product 5</h3>
-                    <p class="price">GHS 300.00</p>
-                    <button class="button" onclick="addToCart('5', 'Product 5', 300.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <span class="badge-featured">FEATURED</span>
-                    <h3>Product 6</h3>
-                    <p class="price">GHS 350.00</p>
-                    <button class="button" onclick="addToCart('6', 'Product 6', 350.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <span class="badge-new">NEW</span>
-                    <h3>Product 7</h3>
-                    <p class="price">GHS 400.00</p>
-                    <button class="button" onclick="addToCart('7', 'Product 7', 400.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <span class="badge-sale">SALE</span>
-                    <span class="badge-featured">FEATURED</span>
-                    <h3>Product 8</h3>
-                    <p class="price">GHS 450.00</p>
-                    <button class="button" onclick="addToCart('8', 'Product 8', 450.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
+            <div class="product-grid" id="popular-products-container">
+                <!-- Products will be loaded dynamically from API -->
+                <div class="loading-spinner">Loading popular products...</div>
             </div>
         </section>
 
@@ -371,6 +316,8 @@
         <i class="fab fa-whatsapp"></i>
     </a>
      
+    <script src="js/api.js"></script>
+    <script src="js/frontend-integration.js"></script>
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/follow.js"></script>
