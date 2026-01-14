@@ -58,6 +58,10 @@
             <div id="cart-items">
                 <!-- Cart items will be dynamically inserted here -->
             </div>
+            <div class="cart-controls">
+                <button class="button clear-cart-btn" onclick="clearCart()">Clear Cart</button>
+                <button class="button continue-shopping-btn" onclick="window.location.href='categories.html'">Continue Shopping</button>
+            </div>
             <div class="cart-summary">
                 <h2>Cart Summary</h2>
                 <p>Subtotal: GHS <span id="cart-subtotal">0.00</span></p>
@@ -121,7 +125,12 @@
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
-    
+     
+    <!-- WhatsApp Floating Icon -->
+    <a href="https://wa.me/233244380498" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+     
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/follow.js"></script>

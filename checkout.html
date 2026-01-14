@@ -64,7 +64,7 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email">
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone:</label>
@@ -76,14 +76,61 @@
                     </div>
                     <div class="form-group">
                         <label for="city">City:</label>
-                        <input type="text" id="city" name="city" required>
+                        <input type="text" id="city" name="city">
                     </div>
-                    <div class="form-group">
-                        <label for="zip-code">ZIP Code:</label>
-                        <input type="text" id="zip-code" name="zip-code" required>
+                    <div class="payment-methods">
+                        <h3>Payment Method</h3>
+                        <div class="payment-options">
+                            <label class="payment-option">
+                                <input type="radio" name="payment-method" value="delivery" checked>
+                                <span class="payment-label">Payment on Delivery</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment-method" value="mtn">
+                                <span class="payment-label">MTN Mobile Money</span>
+                            </label>
+                        </div>
                     </div>
                     <button type="submit" class="button">Place Order</button>
                 </form>
+            </div>
+            
+            <!-- MTN Mobile Money Modal -->
+            <div id="mtnModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeMtnModal()">&times;</span>
+                    <div class="modal-header">
+                        <h2>MTN Mobile Money Payment</h2>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please make payment to the following merchant details:</p>
+                        <div class="merchant-details">
+                            <p><strong>Merchant Number:</strong> 0598956469</p>
+                            <p><strong>Merchant Name:</strong> Buysmart Ent</p>
+                        </div>
+                        <p>After making the payment, upload your payment proof below:</p>
+                        <button class="upload-proof-btn" onclick="openProofModal()">Upload Payment Proof</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment Proof Upload Modal -->
+            <div id="proofModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeProofModal()">&times;</span>
+                    <div class="modal-header">
+                        <h2>Upload Payment Proof</h2>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please upload a screenshot of your payment:</p>
+                        <div class="file-upload-section">
+                            <input type="file" id="payment-proof" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="submitPaymentProof()">Submit Payment Proof</button>
+                    </div>
+                </div>
             </div>
 
             <div class="order-summary">
@@ -91,8 +138,6 @@
                 <div id="order-items">
                     <!-- Order items will be dynamically inserted here -->
                 </div>
-                <p>Subtotal: GHS <span id="order-subtotal">0.00</span></p>
-                <p>Shipping: GHS <span id="order-shipping">0.00</span></p>
                 <p>Total: GHS <span id="order-total">0.00</span></p>
             </div>
         </section>
@@ -141,7 +186,12 @@
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
-    
+     
+    <!-- WhatsApp Floating Icon -->
+    <a href="https://wa.me/233244380498" class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+     
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/follow.js"></script>

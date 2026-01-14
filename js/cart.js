@@ -2,13 +2,13 @@
 console.log("Buysmart Enterprise Cart System");
 
 // Cart Functions
-function addToCart(productId, productName, productPrice) {
+function addToCart(productId, productName, productPrice, productImage) {
     // Retrieve the current cart from LocalStorage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
+     
     // Check if the product is already in the cart
     const existingProduct = cart.find(item => item.id === productId);
-    
+     
     if (existingProduct) {
         // If the product exists, increment the quantity
         existingProduct.quantity += 1;
@@ -18,18 +18,19 @@ function addToCart(productId, productName, productPrice) {
             id: productId,
             name: productName,
             price: productPrice,
+            image: productImage || 'https://via.placeholder.com/80x80/ff0000/ffffff?text=Product',
             quantity: 1
         });
     }
-    
+     
     // Save the updated cart to LocalStorage
     localStorage.setItem('cart', JSON.stringify(cart));
-    
+     
     // Update the cart count in the UI
     updateCartCount();
-    
+     
     console.log(`Added ${productName} to cart`);
-    
+     
     // Update the cart display
     updateCartDisplay();
 }
@@ -64,6 +65,40 @@ function removeFromCart(productId) {
     updateCartDisplay();
 }
 
+// Increase quantity of a product in the cart
+function increaseQuantity(productId) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const product = cart.find(item => item.id === productId);
+    
+    if (product) {
+        product.quantity += 1;
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        updateCartDisplay();
+    }
+}
+
+// Decrease quantity of a product in the cart
+function decreaseQuantity(productId) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const product = cart.find(item => item.id === productId);
+    
+    if (product && product.quantity > 1) {
+        product.quantity -= 1;
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        updateCartDisplay();
+    }
+}
+
+// Clear the entire cart
+function clearCart() {
+    localStorage.setItem('cart', JSON.stringify([]));
+    updateCartCount();
+    updateCartDisplay();
+    console.log('Cart cleared');
+}
+
 // Initialize the cart system
 function initCart() {
     console.log("Initializing Buysmart Enterprise Cart System");
@@ -95,14 +130,23 @@ function updateCartDisplay() {
             cart.forEach(item => {
                 const itemTotal = item.price * item.quantity;
                 subtotal += itemTotal;
-                
+                 
                 cartHTML += `
                 <div class="cart-item">
-                    <h3>${item.name}</h3>
-                    <p>Price: ${formatPrice(item.price)}</p>
-                    <p>Quantity: ${item.quantity}</p>
-                    <p>Total: ${formatPrice(itemTotal)}</p>
-                    <button class="button" onclick="removeFromCart('${item.id}')">Remove</button>
+                    <div class="cart-item-image">
+                        <img src="${item.image || 'https://via.placeholder.com/80x80/ff0000/ffffff?text=Product'}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-info">
+                        <h3>${item.name}</h3>
+                        <p>Price: ${formatPrice(item.price)}</p>
+                        <div class="quantity-control">
+                            <button class="quantity-btn" onclick="decreaseQuantity('${item.id}')">-</button>
+                            <span class="quantity-value">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="increaseQuantity('${item.id}')">+</button>
+                        </div>
+                        <p>Total: ${formatPrice(itemTotal)}</p>
+                    </div>
+                    <button class="button remove-btn" onclick="removeFromCart('${item.id}')">Remove</button>
                 </div>
                 `;
             });
@@ -118,17 +162,19 @@ function updateCartDisplay() {
 function updateOrderSummary() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const orderItemsElement = document.getElementById('order-items');
+    const orderTotalElement = document.getElementById('order-total');
     
-    if (orderItemsElement) {
+    if (orderItemsElement && orderTotalElement) {
         if (cart.length === 0) {
             orderItemsElement.innerHTML = '<p>No items in your order.</p>';
+            orderTotalElement.textContent = '0.00';
         } else {
             let orderHTML = '';
-            let subtotal = 0;
+            let total = 0;
             
             cart.forEach(item => {
                 const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
+                total += itemTotal;
                 
                 orderHTML += `
                 <div class="order-item">
@@ -138,14 +184,7 @@ function updateOrderSummary() {
             });
             
             orderItemsElement.innerHTML = orderHTML;
-            
-            // Calculate shipping (free for orders over GHS 500, otherwise GHS 20)
-            const shipping = subtotal > 500 ? 0 : 20;
-            const total = subtotal + shipping;
-            
-            document.getElementById('order-subtotal').textContent = subtotal.toFixed(2);
-            document.getElementById('order-shipping').textContent = shipping.toFixed(2);
-            document.getElementById('order-total').textContent = total.toFixed(2);
+            orderTotalElement.textContent = total.toFixed(2);
         }
     }
 }
@@ -154,6 +193,9 @@ function updateOrderSummary() {
 function handleCheckoutFormSubmission(event) {
     event.preventDefault();
     
+    // Get selected payment method
+    const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+    
     // Get form data
     const formData = {
         fullName: document.getElementById('full-name').value,
@@ -161,19 +203,104 @@ function handleCheckoutFormSubmission(event) {
         phone: document.getElementById('phone').value,
         address: document.getElementById('address').value,
         city: document.getElementById('city').value,
-        zipCode: document.getElementById('zip-code').value,
+        paymentMethod: paymentMethod,
         cart: JSON.parse(localStorage.getItem('cart')) || [],
         total: document.getElementById('order-total').textContent
     };
     
-    // Store order data
-    localStorage.setItem('orderData', JSON.stringify(formData));
+    // Handle different payment methods
+    if (paymentMethod === 'mtn') {
+        // Show MTN Mobile Money modal
+        openMtnModal();
+    } else {
+        // For payment on delivery, proceed with order
+        submitOrderToWhatsApp(formData);
+    }
+}
+
+// Open MTN Mobile Money modal
+function openMtnModal() {
+    document.getElementById('mtnModal').style.display = 'block';
+}
+
+// Close MTN Mobile Money modal
+function closeMtnModal() {
+    document.getElementById('mtnModal').style.display = 'none';
+}
+
+// Open payment proof upload modal
+function openProofModal() {
+    document.getElementById('proofModal').style.display = 'block';
+}
+
+// Close payment proof upload modal
+function closeProofModal() {
+    document.getElementById('proofModal').style.display = 'none';
+}
+
+// Submit payment proof
+function submitPaymentProof() {
+    const fileInput = document.getElementById('payment-proof');
+    const file = fileInput.files[0];
+    
+    if (file) {
+        // In a real application, you would upload the file to a server here
+        // For this demo, we'll just proceed with the order
+        const formData = JSON.parse(localStorage.getItem('orderData'));
+        submitOrderToWhatsApp(formData);
+        
+        // Close the modal
+        closeProofModal();
+        
+        // Clear cart after successful order
+        localStorage.setItem('cart', JSON.stringify([]));
+        
+        // Update cart display
+        updateCartCount();
+        updateOrderSummary();
+    } else {
+        alert('Please select a file to upload as payment proof.');
+    }
+}
+
+// Submit order to WhatsApp
+function submitOrderToWhatsApp(formData) {
+    // Prepare order details for WhatsApp message
+    const orderItems = formData.cart.map(item =>
+        `${item.name} x ${item.quantity} - GHS ${(item.price * item.quantity).toFixed(2)}`
+    ).join('\n');
+    
+    const message = `
+*New Order from Buysmart Enterprise*\n\n
+*Customer Details:*\n
+Name: ${formData.fullName}\n
+Phone: ${formData.phone}\n
+Email: ${formData.email}\n
+Address: ${formData.address}\n
+City: ${formData.city}\n\n
+*Order Items:*\n
+${orderItems}\n\n
+*Total:* GHS ${formData.total}\n\n
+*Payment Method:* ${formData.paymentMethod}
+    `;
+    
+    // Encode the message for WhatsApp URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // WhatsApp business number
+    const whatsappNumber = '233244380498';
+    
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+    
+    // Show success message
+    alert('Order placed successfully! Thank you for shopping with Buysmart Enterprise. Please complete your payment if you chose MTN Mobile Money.');
     
     // Clear cart after successful order
     localStorage.setItem('cart', JSON.stringify([]));
-    
-    // Redirect to confirmation page or show success message
-    alert('Order placed successfully! Thank you for shopping with Buysmart Enterprise.');
     
     // Update cart display
     updateCartCount();

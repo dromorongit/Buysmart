@@ -207,3 +207,126 @@ function enhancedInit() {
 
 // Run enhanced initialization when the DOM is loaded
 document.addEventListener('DOMContentLoaded', enhancedInit);
+
+// Modal functionality for MTN Mobile Money
+function openMtnModal() {
+    const modal = document.getElementById('mtnModal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function closeMtnModal() {
+    const modal = document.getElementById('mtnModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Modal functionality for Payment Proof Upload
+function openProofModal() {
+    const modal = document.getElementById('proofModal');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function closeProofModal() {
+    const modal = document.getElementById('proofModal');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Handle payment method selection
+function setupPaymentMethods() {
+    const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
+    if (paymentMethods) {
+        paymentMethods.forEach(method => {
+            method.addEventListener('change', function() {
+                if (this.value === 'mtn' && this.checked) {
+                    openMtnModal();
+                }
+            });
+        });
+    }
+}
+
+// Handle payment proof submission
+function submitPaymentProof() {
+    const fileInput = document.getElementById('payment-proof');
+    if (fileInput && fileInput.files.length > 0) {
+        alert('Payment proof uploaded successfully! Your order will be processed.');
+        closeProofModal();
+        closeMtnModal();
+    } else {
+        alert('Please select a file to upload as payment proof.');
+    }
+}
+
+// Handle form submission
+function setupCheckoutForm() {
+    const checkoutForm = document.getElementById('checkout-form');
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const selectedPayment = document.querySelector('input[name="payment-method"]:checked');
+            if (selectedPayment) {
+                if (selectedPayment.value === 'delivery') {
+                    // Handle payment on delivery
+                    alert('Order placed successfully! You will pay on delivery.');
+                    submitOrderToWhatsApp();
+                } else if (selectedPayment.value === 'mtn') {
+                    // Check if payment proof was uploaded
+                    const fileInput = document.getElementById('payment-proof');
+                    if (fileInput && fileInput.files.length > 0) {
+                        alert('Order placed successfully! Your payment is being processed.');
+                        submitOrderToWhatsApp();
+                    } else {
+                        alert('Please upload your payment proof before placing the order.');
+                        openMtnModal();
+                    }
+                }
+            }
+        });
+    }
+}
+
+// Submit order to WhatsApp
+function submitOrderToWhatsApp() {
+    const fullName = document.getElementById('full-name').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+    const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+    
+    const message = `New Order from Buysmart Enterprise:\n\n` +
+                   `Customer Name: ${fullName}\n` +
+                   `Phone: ${phone}\n` +
+                   `Address: ${address}\n` +
+                   `Payment Method: ${paymentMethod === 'delivery' ? 'Payment on Delivery' : 'MTN Mobile Money'}\n` +
+                   `Order Details: ${getOrderDetails()}`;
+    
+    const whatsappUrl = `https://wa.me/233244380498?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+// Get order details from cart
+function getOrderDetails() {
+    // This would be implemented based on your cart structure
+    return "Order details would be populated from cart";
+}
+
+// Enhanced initialization with checkout functionality
+function enhancedInit() {
+    console.log("Initializing Buysmart Enterprise Enhanced Features");
+    
+    // Set up all modern features
+    setupBackToTop();
+    setupNewsletter();
+    setupScrollAnimations();
+    setupCarousels();
+    setupCountdownTimer();
+    setupPaymentMethods();
+    setupCheckoutForm();
+}
