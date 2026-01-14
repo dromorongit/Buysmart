@@ -7,6 +7,13 @@ function toggleMobileNav() {
     const navLinks = document.querySelector('.nav-links');
     hamburger.classList.toggle('active');
     navLinks.classList.toggle('active');
+    
+    // Prevent scrolling when mobile menu is open
+    if (navLinks.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
 }
 
 // Search Functionality
@@ -40,11 +47,24 @@ function init() {
     if (searchButton) {
         searchButton.addEventListener('click', searchProducts);
     }
+    
+    // Close mobile menu when clicking on a nav link
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinksContainer = document.querySelector('.nav-links');
+            if (hamburger && hamburger.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navLinksContainer.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
 }
 
 // Run initialization when the DOM is loaded
 document.addEventListener('DOMContentLoaded', init);
-}
 
 // Back to Top functionality
 function setupBackToTop() {
@@ -121,7 +141,6 @@ setupScrollAnimations();
 
 // Run enhanced initialization when the DOM is loaded
 document.addEventListener('DOMContentLoaded', enhancedInit);
-}
 
 // Carousel functionality
 function setupCarousels() {
