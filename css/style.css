@@ -1203,6 +1203,97 @@ footer {
     transition: all 0.3s ease;
 }
 
+/* Developer Credits Styles */
+.developer-credits {
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.95rem;
+    color: #ccc;
+    border-top: 1px solid #555;
+    margin-top: 1rem;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.developer-credits a {
+    color: #ff0000;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.developer-credits a:hover {
+    color: #ffcc00;
+    text-decoration: underline;
+    transform: translateY(-2px);
+}
+
+.developer-credits a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ff0000;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+.developer-credits a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.developer-credits i {
+    color: #ff0000;
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Enhanced Footer with Developer Credits */
+.footer-enhanced {
+    background: linear-gradient(135deg, #333, #000);
+    color: white;
+    padding: 4rem 0 0;
+}
+
+.footer-bottom-enhanced {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.footer-bottom-enhanced p {
+    margin: 0;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.developer-section {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #555;
+}
+
+.developer-section p {
+    margin: 0;
+    color: #aaa;
+    font-size: 0.85rem;
+}
+
+.developer-section a {
+    color: #ff0000;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.developer-section a:hover {
+    color: #ffcc00;
+}
+
 /* Hero Section Text Animations */
 .hero-title {
     opacity: 0;
