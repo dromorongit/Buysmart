@@ -10,7 +10,7 @@ const createProduct = async (req, res) => {
   }
 
   try {
-    const { name, category, price, discountPrice, description, inStock, isFeatured, isNew, isOnSale } = req.body;
+    const { name, category, price, discountPrice, description, inStock, isFeatured, isPopular, isNew, isOnSale } = req.body;
 
     // Handle file uploads
     const coverImage = req.files['coverImage'] ? req.files['coverImage'][0].path : '';
@@ -26,6 +26,7 @@ const createProduct = async (req, res) => {
       galleryImages,
       inStock,
       isFeatured,
+      isPopular,
       isNew,
       isOnSale
     });
@@ -74,7 +75,7 @@ const updateProduct = async (req, res) => {
   }
 
   try {
-    const { name, category, price, discountPrice, description, inStock, isFeatured, isNew, isOnSale } = req.body;
+    const { name, category, price, discountPrice, description, inStock, isFeatured, isPopular, isNew, isOnSale } = req.body;
 
     const product = await Product.findById(req.params.id);
     if (!product) {
@@ -89,6 +90,7 @@ const updateProduct = async (req, res) => {
     product.description = description || product.description;
     product.inStock = inStock || product.inStock;
     product.isFeatured = isFeatured || product.isFeatured;
+    product.isPopular = isPopular || product.isPopular;
     product.isNew = isNew || product.isNew;
     product.isOnSale = isOnSale || product.isOnSale;
 

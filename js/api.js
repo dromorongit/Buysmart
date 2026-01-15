@@ -97,6 +97,20 @@ class BuySmartAPI {
   }
 
   /**
+   * Get popular products
+   * @returns {Promise<Array>} Array of popular product objects
+   */
+  async getPopularProducts() {
+    try {
+      const products = await this.getAllProducts();
+      return products.filter(product => product.isPopular);
+    } catch (error) {
+      console.error('Error fetching popular products:', error);
+      return [];
+    }
+  }
+
+  /**
    * Get products by category
    * @param {string} category - Product category
    * @returns {Promise<Array>} Array of products in category

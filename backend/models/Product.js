@@ -48,6 +48,10 @@ const ProductSchema = new mongoose.Schema({
   isOnSale: {
     type: Boolean,
     default: false
+  },
+  isPopular: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: true
