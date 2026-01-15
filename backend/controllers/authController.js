@@ -5,24 +5,33 @@ const { validationResult } = require('express-validator');
 
 // Register a new user
 const register = async (req, res) => {
+  console.log('Register attempt started');
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     const errorMessages = errors.array().map(error => error.msg).join(', ');
-    return res.render('auth/register', { error: errorMessages });
+    console.log('Validation failed:', errorMessages);
+    res.send('Validation error: ' + errorMessages);
+    return;
   }
 
   const { username, email, password } = req.body;
+  console.log('Validation passed, body:', { username, email, password: '***' });
 
   try {
     // Check if user already exists
+    console.log('Checking if user exists');
     let user = await User.findOne({ $or: [{ email }, { username }] });
     if (user) {
-      return res.render('auth/register', { error: 'User already exists' });
+      console.log('User already exists');
+      res.send('User already exists');
+      return;
     }
 
+    console.log('Creating new user');
     // Create new user
     user = new User({ username, email, password, role: 'admin' });
     await user.save();
+    console.log('User saved successfully');
 
     // Create token
     const payload = {
@@ -32,38 +41,31 @@ const register = async (req, res) => {
       }
     };
 
+    console.log('Signing JWT');
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
       { expiresIn: '1h' },
       (err, token) => {
         if (err) {
-          console.error(err.message);
-          try {
-            res.render('auth/register', { error: 'Server error' });
-          } catch (renderErr) {
-            console.error('Render error:', renderErr.message);
-            res.status(500).send('Server error');
-          }
+          console.error('JWT sign error:', err.message);
+          res.send('Server error');
           return;
         }
+        console.log('JWT signed successfully');
         // Set JWT token in HTTP-only cookie and redirect to login page after successful registration
         res.cookie('token', token, {
           httpOnly: true,
           secure: process.env.NODE_ENV === 'production',
           maxAge: 3600000 // 1 hour
         });
+        console.log('Redirecting to login');
         res.redirect('/login');
       }
     );
   } catch (err) {
-    console.error(err.message);
-    try {
-      res.render('auth/register', { error: 'Server error' });
-    } catch (renderErr) {
-      console.error('Render error:', renderErr.message);
-      res.status(500).send('Server error');
-    }
+    console.error('Register catch error:', err.message);
+    res.send('Server error');
   }
 };
 
