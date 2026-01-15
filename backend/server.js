@@ -18,9 +18,26 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/images', express.static(path.join(__dirname, '../assets/images')));
 
+// Serve static files from public directory
+app.use('/css', express.static(path.join(__dirname, 'public/css')));
+app.use('/js', express.static(path.join(__dirname, 'public/js')));
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
+
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// Development error handler - will print stacktrace
+if (process.env.NODE_ENV === 'development') {
+  app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).render('error', {
+      message: err.message,
+      error: err,
+      stack: err.stack
+    });
+  });
+}
 
 // Database connection with validation
 const mongodbUri = process.env.MONGODB_URI || process.env.MONGO_URI;
