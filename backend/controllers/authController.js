@@ -37,7 +37,8 @@ const register = async (req, res) => {
       { expiresIn: '1h' },
       (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        // Redirect to login page after successful registration
+        res.redirect('/login');
       }
     );
   } catch (err) {
