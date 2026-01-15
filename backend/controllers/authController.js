@@ -83,7 +83,13 @@ const login = async (req, res) => {
       { expiresIn: '1h' },
       (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        // Set JWT token in HTTP-only cookie and redirect to dashboard
+        res.cookie('token', token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+          maxAge: 3600000 // 1 hour
+        });
+        res.redirect('/dashboard');
       }
     );
   } catch (err) {
