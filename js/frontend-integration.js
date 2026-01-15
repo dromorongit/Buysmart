@@ -17,21 +17,31 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function initializeFrontendIntegration() {
   const api = window.buysmartAPI;
-  
+
   try {
     // Load featured products on homepage
     if (document.getElementById('featured-products-container')) {
       await loadFeaturedProducts(api);
     }
-    
+
     // Load popular products on homepage
     if (document.getElementById('popular-products-container')) {
       await loadPopularProducts(api);
     }
-    
+
+    // Load left carousel with featured products
+    if (document.getElementById('left-carousel')) {
+      await loadLeftCarousel(api);
+    }
+
+    // Load right carousel with sale products
+    if (document.getElementById('right-carousel')) {
+      await loadRightCarousel(api);
+    }
+
     // Setup search functionality
     setupSearch(api);
-    
+
     console.log('Frontend integration initialized successfully');
   } catch (error) {
     console.error('Frontend integration error:', error);
@@ -66,26 +76,105 @@ async function loadFeaturedProducts(api) {
 async function loadPopularProducts(api) {
   const container = document.getElementById('popular-products-container');
   if (!container) return;
-  
+
   try {
     // Show loading state
     container.innerHTML = '<div class="loading-spinner">Loading popular products...</div>';
-    
+
     // For demo purposes, we'll use products on sale as "popular"
     // In a real app, you might have a popularity metric in your database
     const popularProducts = await api.getSaleProducts();
-    
+
     if (popularProducts.length === 0) {
       container.innerHTML = '<p class="no-products">No popular products available.</p>';
       return;
     }
-    
+
     // Render products
     api.renderProducts('#popular-products-container', popularProducts);
-    
+
   } catch (error) {
     console.error('Error loading popular products:', error);
     container.innerHTML = '<p class="error-message">Failed to load popular products. Please try again later.</p>';
+  }
+}
+
+async function loadLeftCarousel(api) {
+  const container = document.getElementById('left-carousel');
+  if (!container) return;
+
+  try {
+    // Show loading state
+    container.innerHTML = '<div class="loading-spinner">Loading featured products...</div>';
+
+    // Fetch featured products
+    const featuredProducts = await api.getFeaturedProducts();
+
+    if (featuredProducts.length === 0) {
+      container.innerHTML = '<p class="no-products">No featured products available.</p>';
+      return;
+    }
+
+    // Render as carousel slides
+    renderCarouselSlides(container, featuredProducts);
+
+  } catch (error) {
+    console.error('Error loading left carousel:', error);
+    container.innerHTML = '<p class="error-message">Failed to load featured products.</p>';
+  }
+}
+
+async function loadRightCarousel(api) {
+  const container = document.getElementById('right-carousel');
+  if (!container) return;
+
+  try {
+    // Show loading state
+    container.innerHTML = '<div class="loading-spinner">Loading sale products...</div>';
+
+    // Fetch sale products
+    const saleProducts = await api.getSaleProducts();
+
+    if (saleProducts.length === 0) {
+      container.innerHTML = '<p class="no-products">No sale products available.</p>';
+      return;
+    }
+
+    // Render as carousel slides
+    renderCarouselSlides(container, saleProducts);
+
+  } catch (error) {
+    console.error('Error loading right carousel:', error);
+    container.innerHTML = '<p class="error-message">Failed to load sale products.</p>';
+  }
+}
+
+function renderCarouselSlides(container, products) {
+  const api = window.buysmartAPI;
+  const slides = products.slice(0, 3).map((product, index) => `
+    <div class="carousel-slide ${index === 0 ? 'active' : ''}">
+      <img src="/${product.coverImage}" alt="${product.name}">
+      <div class="carousel-caption">
+        <h4>${product.name}</h4>
+        <p>${api.formatProductPrice(product)}</p>
+        <a href="product-details.html?id=${product._id}" class="button">View Details</a>
+      </div>
+    </div>
+  `).join('');
+
+  container.innerHTML = slides;
+
+  // Initialize carousel functionality if needed
+  initializeCarousel(container);
+}
+
+function initializeCarousel(container) {
+  // Add carousel navigation if not already present
+  // This is a basic implementation - you may need to enhance based on your carousel JS
+  const slides = container.querySelectorAll('.carousel-slide');
+  if (slides.length > 1) {
+    // Add navigation dots or arrows if needed
+    // For now, just ensure the active slide is shown
   }
 }
 
