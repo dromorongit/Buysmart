@@ -37,7 +37,12 @@ const register = async (req, res) => {
       { expiresIn: '1h' },
       (err, token) => {
         if (err) throw err;
-        // Redirect to login page after successful registration
+        // Set JWT token in HTTP-only cookie and redirect to login page after successful registration
+        res.cookie('token', token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+          maxAge: 3600000 // 1 hour
+        });
         res.redirect('/login');
       }
     );
