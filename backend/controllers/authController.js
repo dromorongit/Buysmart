@@ -10,7 +10,7 @@ const register = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { username, email, password, role } = req.body;
+  const { username, email, password } = req.body;
 
   try {
     // Check if user already exists
@@ -20,7 +20,7 @@ const register = async (req, res) => {
     }
 
     // Create new user
-    user = new User({ username, email, password, role });
+    user = new User({ username, email, password, role: 'admin' });
     await user.save();
 
     // Create token
