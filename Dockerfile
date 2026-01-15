@@ -23,6 +23,12 @@ COPY backend/public ./public
 COPY backend/uploads ./uploads
 COPY backend/server.js ./
 
+# Copy view files explicitly to ensure they're included
+COPY backend/views/auth ./views/auth
+COPY backend/views/dashboard ./views/dashboard
+COPY backend/views/partials ./views/partials
+COPY backend/views/error.ejs ./views/error.ejs
+
 # Create necessary directories if they don't exist
 RUN mkdir -p uploads && mkdir -p public/images
 
