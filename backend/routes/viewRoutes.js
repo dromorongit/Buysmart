@@ -39,6 +39,36 @@ router.get('/dashboard', auth, async (req, res) => {
     }
 });
 
+// Products list
+router.get('/products', auth, async (req, res) => {
+    try {
+        const products = await Product.find().sort({ createdAt: -1 });
+        res.render('products/index', { products, user: req.user });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+    }
+});
+
+// Add product form
+router.get('/products/add', auth, (req, res) => {
+    res.render('products/add', { user: req.user });
+});
+
+// Edit product form
+router.get('/products/edit/:id', auth, async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id);
+        if (!product) {
+            return res.status(404).send('Product not found');
+        }
+        res.render('products/edit', { product, user: req.user });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+    }
+});
+
 // Root route - redirect to login
 router.get('/', (req, res) => {
     res.redirect('/login');

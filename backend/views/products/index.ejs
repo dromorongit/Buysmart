@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - BuySmart Admin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: white;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #34495e;
+        }
+
+        .sidebar-header img {
+            width: 100px;
+            height: auto;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .sidebar-menu li {
+            padding: 12px 20px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .sidebar-menu li:hover {
+            background-color: #34495e;
+            border-left: 3px solid #4CAF50;
+        }
+
+        .sidebar-menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .sidebar-menu li.active {
+            background-color: #34495e;
+            border-left: 3px solid #4CAF50;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            padding: 20px;
+        }
+
+        .header {
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        .products-section {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            color: #333;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .add-product-btn {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-product-btn:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .status-instock {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-outofstock {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .edit-btn {
+            padding: 5px 10px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .delete-btn {
+            padding: 5px 10px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .main-content {
+                margin-left: 200px;
+                width: calc(100% - 200px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="/images/Buysmartlogo.PNG" alt="BuySmart Logo">
+        </div>
+
+        <ul class="sidebar-menu">
+            <li>
+                <a href="/dashboard">Dashboard</a>
+            </li>
+            <li class="active">
+                <a href="/products">Products</a>
+            </li>
+            <li>
+                <a href="/products/add">Add Product</a>
+            </li>
+            <li>
+                <a href="/profile">Profile</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Products</h1>
+        </div>
+
+        <div class="products-section">
+            <div class="section-header">
+                <h2 class="section-title">All Products</h2>
+                <a href="/products/add" class="add-product-btn">+ Add New Product</a>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(product => { %>
+                        <tr>
+                            <td><%= product._id %></td>
+                            <td><%= product.name %></td>
+                            <td><%= product.category %></td>
+                            <td>$<%= product.price.toFixed(2) %></td>
+                            <td>
+                                <span class="status-badge <%= product.inStock ? 'status-instock' : 'status-outofstock' %>">
+                                    <%= product.inStock ? 'In Stock' : 'Out of Stock' %>
+                                </span>
+                            </td>
+                            <td class="actions">
+                                <a href="/products/edit/<%= product._id %>">
+                                    <button class="edit-btn">Edit</button>
+                                </a>
+                                <form action="/api/products/<%= product._id %>?_method=DELETE" method="POST" style="display: inline;">
+                                    <button class="delete-btn" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -31,7 +31,7 @@ const createProduct = async (req, res) => {
     });
 
     await product.save();
-    res.status(201).json(product);
+    res.redirect('/dashboard');
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
@@ -101,7 +101,7 @@ const updateProduct = async (req, res) => {
     }
 
     await product.save();
-    res.json(product);
+    res.redirect('/products');
   } catch (err) {
     console.error(err.message);
     if (err.kind === 'ObjectId') {
@@ -120,7 +120,7 @@ const deleteProduct = async (req, res) => {
     }
 
     await product.remove();
-    res.json({ msg: 'Product removed' });
+    res.redirect('/products');
   } catch (err) {
     console.error(err.message);
     if (err.kind === 'ObjectId') {
