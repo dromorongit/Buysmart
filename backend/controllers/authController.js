@@ -39,7 +39,13 @@ const register = async (req, res) => {
       (err, token) => {
         if (err) {
           console.error(err.message);
-          return res.render('auth/register', { error: 'Server error' });
+          try {
+            res.render('auth/register', { error: 'Server error' });
+          } catch (renderErr) {
+            console.error('Render error:', renderErr.message);
+            res.status(500).send('Server error');
+          }
+          return;
         }
         // Set JWT token in HTTP-only cookie and redirect to login page after successful registration
         res.cookie('token', token, {
@@ -52,7 +58,12 @@ const register = async (req, res) => {
     );
   } catch (err) {
     console.error(err.message);
-    res.render('auth/register', { error: 'Server error' });
+    try {
+      res.render('auth/register', { error: 'Server error' });
+    } catch (renderErr) {
+      console.error('Render error:', renderErr.message);
+      res.status(500).send('Server error');
+    }
   }
 };
 
