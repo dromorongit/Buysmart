@@ -31,10 +31,8 @@ if (!mongodbUri) {
   process.exit(1);
 }
 
-mongoose.connect(mongodbUri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+// Updated for Mongoose 6+ - removed deprecated options
+mongoose.connect(mongodbUri)
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => {
   console.error('MongoDB connection error:', err);
