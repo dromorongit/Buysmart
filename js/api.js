@@ -15,7 +15,7 @@ class BuySmartAPI {
   init() {
     // Check if we're running in production
     if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-      this.baseUrl = 'https://buysmart-admin.railway.app/api';
+      this.baseUrl = 'https://buysmart-production.up.railway.app/api';
     }
   }
 

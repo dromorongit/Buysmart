@@ -9,7 +9,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5500', 'http://127.0.0.1:5500', process.env.FRONTEND_URL || ''],
+  origin: ['http://localhost:5500', 'http://127.0.0.1:5500', 'https://buysmart-production.up.railway.app', process.env.FRONTEND_URL || ''],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
