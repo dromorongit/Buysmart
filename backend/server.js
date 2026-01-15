@@ -22,13 +22,25 @@ app.use('/images', express.static(path.join(__dirname, '../assets/images')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// Database connection
-mongoose.connect(process.env.MONGODB_URI, { 
-  useNewUrlParser: true, 
-  useUnifiedTopology: true 
+// Database connection with validation
+const mongodbUri = process.env.MONGODB_URI || process.env.MONGO_URI;
+
+if (!mongodbUri) {
+  console.error('MongoDB connection URI is not defined in environment variables');
+  console.error('Please set MONGODB_URI or MONGO_URI environment variable');
+  process.exit(1);
+}
+
+mongoose.connect(mongodbUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 })
 .then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('MongoDB connection error:', err));
+.catch(err => {
+  console.error('MongoDB connection error:', err);
+  console.error('Connection string used:', mongodbUri);
+  process.exit(1);
+});
 
 // Routes
 const authRoutes = require('./routes/authRoutes');

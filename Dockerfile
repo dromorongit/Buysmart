@@ -21,7 +21,6 @@ COPY backend/routes ./routes
 COPY backend/views ./views
 COPY backend/public ./public
 COPY backend/uploads ./uploads
-COPY backend/.env ./
 COPY backend/server.js ./
 
 # Create necessary directories if they don't exist
