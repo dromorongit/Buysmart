@@ -7,7 +7,8 @@ const { validationResult } = require('express-validator');
 const register = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    const errorMessages = errors.array().map(error => error.msg).join(', ');
+    return res.render('auth/register', { error: errorMessages });
   }
 
   const { username, email, password } = req.body;
@@ -16,7 +17,7 @@ const register = async (req, res) => {
     // Check if user already exists
     let user = await User.findOne({ email });
     if (user) {
-      return res.status(400).json({ msg: 'User already exists' });
+      return res.render('auth/register', { error: 'User already exists' });
     }
 
     // Create new user
@@ -48,7 +49,7 @@ const register = async (req, res) => {
     );
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.render('auth/register', { error: 'Server error' });
   }
 };
 
