@@ -158,6 +158,30 @@
             background-color: #5a6268;
         }
 
+        .category-checkboxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
         .form-actions {
             display: flex;
             gap: 10px;
@@ -215,8 +239,41 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="category">Category *</label>
-                    <input type="text" id="category" name="category" required>
+                    <label>Categories * (Select all that apply)</label>
+                    <div class="category-checkboxes">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="household-appliances" name="category" value="household-appliances">
+                            <label for="household-appliances">Household Appliances</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="kitchen-appliances" name="category" value="kitchen-appliances">
+                            <label for="kitchen-appliances">Kitchen Appliances</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="luxury-products" name="category" value="luxury-products">
+                            <label for="luxury-products">Luxury Products</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="men-products" name="category" value="men-products">
+                            <label for="men-products">Men Products</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="women-products" name="category" value="women-products">
+                            <label for="women-products">Women Products</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="supplements" name="category" value="supplements">
+                            <label for="supplements">Supplements</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="gadgets" name="category" value="gadgets">
+                            <label for="gadgets">Gadgets</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="general-goods" name="category" value="general-goods">
+                            <label for="general-goods">General Goods</label>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">

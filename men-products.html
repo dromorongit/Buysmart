@@ -62,31 +62,9 @@
         
         <section class="category-section">
             <h1>Men Products</h1>
-            <div class="product-grid">
-                <div class="product-card">
-                    <h3>Men Product 1</h3>
-                    <p class="price">GHS 50.00</p>
-                    <button class="button" onclick="addToCart('401', 'Men Product 1', 50.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <h3>Men Product 2</h3>
-                    <p class="price">GHS 75.00</p>
-                    <button class="button" onclick="addToCart('402', 'Men Product 2', 75.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <h3>Men Product 3</h3>
-                    <p class="price">GHS 100.00</p>
-                    <button class="button" onclick="addToCart('403', 'Men Product 3', 100.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <h3>Men Product 4</h3>
-                    <p class="price">GHS 125.00</p>
-                    <button class="button" onclick="addToCart('404', 'Men Product 4', 125.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
+            <div class="product-grid" id="category-products-container">
+                <!-- Products will be loaded dynamically -->
+                <div class="loading-spinner">Loading products...</div>
             </div>
         </section>
 
@@ -151,8 +129,28 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
+    <script src="js/api.js"></script>
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/follow.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (typeof window.buysmartAPI !== 'undefined') {
+                const api = window.buysmartAPI;
+                const container = document.getElementById('category-products-container');
+                if (container) {
+                    container.innerHTML = '<div class="loading-spinner">Loading products...</div>';
+                    const products = await api.getProductsByCategory('men-products');
+                    if (products.length === 0) {
+                        container.innerHTML = '<p class="no-products">No products available in this category.</p>';
+                    } else {
+                        const productCards = products.map(product => api.generateProductCard(product));
+                        container.innerHTML = productCards.join('');
+                        api.setupAddToCartListeners();
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

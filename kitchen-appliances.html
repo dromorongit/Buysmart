@@ -63,31 +63,9 @@
         
         <section class="category-section">
             <h1>Kitchen Appliances</h1>
-            <div class="product-grid">
-                <div class="product-card">
-                    <h3>Kitchen Appliance 1</h3>
-                    <p class="price">GHS 100.00</p>
-                    <button class="button" onclick="addToCart('201', 'Kitchen Appliance 1', 100.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <h3>Kitchen Appliance 2</h3>
-                    <p class="price">GHS 150.00</p>
-                    <button class="button" onclick="addToCart('202', 'Kitchen Appliance 2', 150.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <h3>Kitchen Appliance 3</h3>
-                    <p class="price">GHS 200.00</p>
-                    <button class="button" onclick="addToCart('203', 'Kitchen Appliance 3', 200.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
-                <div class="product-card">
-                    <h3>Kitchen Appliance 4</h3>
-                    <p class="price">GHS 250.00</p>
-                    <button class="button" onclick="addToCart('204', 'Kitchen Appliance 4', 250.00)">Add to Cart</button>
-                    <a href="product-details.html" class="button">View More</a>
-                </div>
+            <div class="product-grid" id="category-products-container">
+                <!-- Products will be loaded dynamically -->
+                <div class="loading-spinner">Loading products...</div>
             </div>
         </section>
 
@@ -152,8 +130,28 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
+    <script src="js/api.js"></script>
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/follow.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            if (typeof window.buysmartAPI !== 'undefined') {
+                const api = window.buysmartAPI;
+                const container = document.getElementById('category-products-container');
+                if (container) {
+                    container.innerHTML = '<div class="loading-spinner">Loading products...</div>';
+                    const products = await api.getProductsByCategory('kitchen-appliances');
+                    if (products.length === 0) {
+                        container.innerHTML = '<p class="no-products">No products available in this category.</p>';
+                    } else {
+                        const productCards = products.map(product => api.generateProductCard(product));
+                        container.innerHTML = productCards.join('');
+                        api.setupAddToCartListeners();
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

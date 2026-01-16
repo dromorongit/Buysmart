@@ -8,9 +8,14 @@ const ProductSchema = new mongoose.Schema({
     trim: true
   },
   category: {
-    type: String,
+    type: [String],
     required: [true, 'Category is required'],
-    trim: true
+    validate: {
+      validator: function(v) {
+        return v && v.length > 0;
+      },
+      message: 'At least one category is required'
+    }
   },
   price: {
     type: Number,

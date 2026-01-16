@@ -118,7 +118,7 @@ class BuySmartAPI {
   async getProductsByCategory(category) {
     try {
       const products = await this.getAllProducts();
-      return products.filter(product => product.category === category);
+      return products.filter(product => product.category && product.category.includes(category));
     } catch (error) {
       console.error('Error fetching products by category:', error);
       return [];
