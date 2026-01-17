@@ -294,7 +294,7 @@ function setupCheckoutForm() {
     if (checkoutForm) {
         checkoutForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const selectedPayment = document.querySelector('input[name="payment-method"]:checked');
             if (selectedPayment) {
                 if (selectedPayment.value === 'delivery') {
@@ -313,6 +313,34 @@ function setupCheckoutForm() {
                     }
                 }
             }
+        });
+    }
+}
+
+// Handle contact form submission
+function setupContactForm() {
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            const whatsappMessage = `New Contact Message from Buysmart Enterprise:\n\n` +
+                                   `Name: ${name}\n` +
+                                   `Email: ${email}\n` +
+                                   `Subject: ${subject}\n` +
+                                   `Message: ${message}`;
+
+            const whatsappUrl = `https://wa.me/233244380498?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappUrl, '_blank');
+
+            // Reset form
+            contactForm.reset();
+            alert('Message sent successfully!');
         });
     }
 }
@@ -348,7 +376,7 @@ function getOrderDetails() {
 // Enhanced initialization with checkout functionality
 function enhancedInit() {
     console.log("Initializing Buysmart Enterprise Enhanced Features");
-    
+
     // Set up all modern features
     setupBackToTop();
     setupNewsletter();
@@ -357,4 +385,5 @@ function enhancedInit() {
     setupCountdownTimer();
     setupPaymentMethods();
     setupCheckoutForm();
+    setupContactForm();
 }
