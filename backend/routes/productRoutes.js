@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { check } = require('express-validator');
 const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
 const { adminAuth } = require('../middleware/auth');
 const productController = require('../controllers/productController');
 
@@ -17,6 +18,13 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 // @route   POST /api/products
 // @desc    Create a product
@@ -64,5 +72,34 @@ router.put(
 // @route   DELETE /api/products/:id
 // @desc    Delete product
 router.delete('/:id', adminAuth, productController.deleteProduct);
+
+// @route   POST /api/products/upload-payment-proof
+// @desc    Upload payment proof to Cloudinary
+router.post('/upload-payment-proof', upload.single('paymentProof'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file uploaded' });
+    }
+
+    // Upload to Cloudinary
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: 'payment_proofs',
+      public_id: `proof_${Date.now()}`,
+      resource_type: 'image'
+    });
+
+    // Delete local file after upload
+    const fs = require('fs');
+    fs.unlinkSync(req.file.path);
+
+    res.json({
+      message: 'Payment proof uploaded successfully',
+      url: result.secure_url
+    });
+  } catch (error) {
+    console.error('Cloudinary upload error:', error);
+    res.status(500).json({ message: 'Failed to upload payment proof' });
+  }
+});
 
 module.exports = router;

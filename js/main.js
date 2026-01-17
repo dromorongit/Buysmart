@@ -252,13 +252,37 @@ function setupPaymentMethods() {
     }
 }
 
+// Global variable to store payment proof URL
+let paymentProofUrl = null;
+
 // Handle payment proof submission
-function submitPaymentProof() {
+async function submitPaymentProof() {
     const fileInput = document.getElementById('payment-proof');
     if (fileInput && fileInput.files.length > 0) {
-        alert('Payment proof uploaded successfully! Your order will be processed.');
-        closeProofModal();
-        closeMtnModal();
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append('paymentProof', file);
+
+        try {
+            const response = await fetch('/api/products/upload-payment-proof', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                paymentProofUrl = result.url;
+                alert('Payment proof uploaded successfully! Your order will be processed.');
+                closeProofModal();
+                closeMtnModal();
+            } else {
+                alert('Failed to upload payment proof. Please try again.');
+            }
+        } catch (error) {
+            console.error('Upload error:', error);
+            alert('Failed to upload payment proof. Please try again.');
+        }
     } else {
         alert('Please select a file to upload as payment proof.');
     }
@@ -299,14 +323,18 @@ function submitOrderToWhatsApp() {
     const phone = document.getElementById('phone').value;
     const address = document.getElementById('address').value;
     const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
-    
-    const message = `New Order from Buysmart Enterprise:\n\n` +
-                   `Customer Name: ${fullName}\n` +
-                   `Phone: ${phone}\n` +
-                   `Address: ${address}\n` +
-                   `Payment Method: ${paymentMethod === 'delivery' ? 'Payment on Delivery' : 'MTN Mobile Money'}\n` +
-                   `Order Details: ${getOrderDetails()}`;
-    
+
+    let message = `New Order from Buysmart Enterprise:\n\n` +
+                  `Customer Name: ${fullName}\n` +
+                  `Phone: ${phone}\n` +
+                  `Address: ${address}\n` +
+                  `Payment Method: ${paymentMethod === 'delivery' ? 'Payment on Delivery' : 'MTN Mobile Money'}\n` +
+                  `Order Details: ${getOrderDetails()}`;
+
+    if (paymentMethod === 'mtn' && paymentProofUrl) {
+        message += `\nPayment Proof: ${paymentProofUrl}`;
+    }
+
     const whatsappUrl = `https://wa.me/233244380498?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }

@@ -1,6 +1,32 @@
 // controllers/productController.js
 const Product = require('../models/Product');
 const { validationResult } = require('express-validator');
+const cloudinary = require('cloudinary').v2;
+const fs = require('fs');
+
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+// Helper function to upload image to Cloudinary
+const uploadToCloudinary = async (filePath, folder = 'products') => {
+  try {
+    const result = await cloudinary.uploader.upload(filePath, {
+      folder,
+      public_id: `${Date.now()}-${Math.random().toString(36).substring(2)}`,
+      resource_type: 'image'
+    });
+    // Delete local file after upload
+    fs.unlinkSync(filePath);
+    return result.secure_url;
+  } catch (error) {
+    console.error('Cloudinary upload error:', error);
+    throw error;
+  }
+};
 
 // Create a new product
 const createProduct = async (req, res) => {
@@ -12,9 +38,19 @@ const createProduct = async (req, res) => {
   try {
     const { name, category, price, discountPrice, description, inStock, isFeatured, isPopular, isNew, isOnSale } = req.body;
 
-    // Handle file uploads
-    const coverImage = req.files['coverImage'] ? req.files['coverImage'][0].path : '';
-    const galleryImages = req.files['galleryImages'] ? req.files['galleryImages'].map(file => file.path) : [];
+    // Handle file uploads to Cloudinary
+    let coverImage = '';
+    let galleryImages = [];
+
+    if (req.files['coverImage']) {
+      coverImage = await uploadToCloudinary(req.files['coverImage'][0].path, 'products/covers');
+    }
+
+    if (req.files['galleryImages']) {
+      galleryImages = await Promise.all(
+        req.files['galleryImages'].map(file => uploadToCloudinary(file.path, 'products/gallery'))
+      );
+    }
 
     const product = new Product({
       name,
@@ -94,12 +130,15 @@ const updateProduct = async (req, res) => {
     product.isNew = isNew || product.isNew;
     product.isOnSale = isOnSale || product.isOnSale;
 
-    // Handle file uploads if present
+    // Handle file uploads to Cloudinary if present
     if (req.files['coverImage']) {
-      product.coverImage = req.files['coverImage'][0].path;
+      product.coverImage = await uploadToCloudinary(req.files['coverImage'][0].path, 'products/covers');
     }
     if (req.files['galleryImages']) {
-      product.galleryImages = req.files['galleryImages'].map(file => file.path);
+      const newGalleryImages = await Promise.all(
+        req.files['galleryImages'].map(file => uploadToCloudinary(file.path, 'products/gallery'))
+      );
+      product.galleryImages = [...product.galleryImages, ...newGalleryImages];
     }
 
     await product.save();
