@@ -11,13 +11,26 @@
     <header>
         <nav>
             <div class="logo">
-                <img src="assets/images/Buysmartlogo.PNG" alt="Buysmart Enterprise Logo">
+                <div class="logo"><div class="logo">
+                    <img src="assets/images/Buysmartlogo.PNG" alt="Buysmart Enterprise Logo">
+                </div>
+                <button class="hamburger" id="mobile-nav-toggle" onclick="toggleMobileNav()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            <button class="hamburger" id="mobile-nav-toggle" onclick="toggleMobileNav()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="header-bottom-row">
+                <div class="follow-icon">
+                    <button id="follow-button-header" class="button">Follow</button>
+                    <span id="follower-count-header">0</span>
+                </div>
+                </div><div class="cart-icon">
+                    <a href="cart.html">
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
@@ -28,15 +41,6 @@
                 <div class="search-bar">
                     <input type="text" id="search-input" placeholder="Search products...">
                     <button id="search-button">Search</button>
-                </div>
-                <div class="cart-icon">
-                    <a href="cart.html">
-                        <span id="cart-count">0</span>
-                    </a>
-                </div>
-                <div class="follow-icon">
-                    <button id="follow-button-header" class="button">Follow</button>
-                    <span id="follower-count-header">0</span>
                 </div>
             </div>
         </nav>
