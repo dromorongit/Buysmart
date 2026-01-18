@@ -131,14 +131,14 @@ class BuySmartAPI {
    * @returns {string} Formatted price string
    */
   formatProductPrice(product) {
-    if (product.discountPrice && product.discountPrice > 0) {
-      return `
-        <span class="original-price">$${product.price.toFixed(2)}</span>
-        <span class="discount-price">$${product.discountPrice.toFixed(2)}</span>
-      `;
-    }
-    return `$${product.price.toFixed(2)}`;
-  }
+   if (product.discountPrice && product.discountPrice > 0) {
+     return `
+       <span class="original-price">GHS ${product.price.toFixed(2)}</span>
+       <span class="discount-price">GHS ${product.discountPrice.toFixed(2)}</span>
+     `;
+   }
+   return `GHS ${product.price.toFixed(2)}`;
+ }
 
   /**
    * Generate product badge HTML
@@ -181,7 +181,7 @@ class BuySmartAPI {
     return `
       <div class="product-card ${stockClass}">
         <div class="product-image">
-          <img src="/${product.coverImage}" alt="${product.name}">
+          <img src="${product.coverImage}" alt="${product.name}" onerror="this.src='assets/images/placeholder.jpg'">
           <div class="product-badges">${badgesHtml}</div>
         </div>
         <div class="product-info">
