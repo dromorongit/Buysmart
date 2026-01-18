@@ -1989,6 +1989,7 @@ footer {
     .category-grid-four {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
+        padding: 0 1rem;
     }
 
     .category-card {
@@ -1996,10 +1997,14 @@ footer {
         height: auto;
         margin-bottom: 1rem;
         padding: 1rem;
+        box-sizing: border-box;
+        max-width: 200px;
+        margin: 0 auto 1rem;
     }
 
     .category-card img {
         height: 120px;
+        object-fit: contain;
     }
 
     .hero-banner {
