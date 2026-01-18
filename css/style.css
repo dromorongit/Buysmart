@@ -1988,11 +1988,13 @@ footer {
 
     .category-grid-four {
         grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 
     .category-card {
         width: 100%;
         height: auto;
+        margin-bottom: 1rem;
     }
 }
 
