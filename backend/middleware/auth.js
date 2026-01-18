@@ -7,6 +7,9 @@ const auth = (req, res, next) => {
 
   // Check if no token
   if (!token) {
+    if (req.accepts('html')) {
+      return res.redirect('/login');
+    }
     return res.status(401).json({ msg: 'No token, authorization denied' });
   }
 
@@ -16,8 +19,11 @@ const auth = (req, res, next) => {
     req.user = decoded.user;
     next();
   } catch (err) {
-    res.status(401).json({ msg: 'Token is not valid' });
-  }
+   if (req.accepts('html')) {
+     return res.redirect('/login');
+   }
+   res.status(401).json({ msg: 'Token is not valid' });
+ }
 };
 
 // Admin role check
@@ -26,6 +32,9 @@ const adminAuth = (req, res, next) => {
     if (req.user && req.user.role === 'admin') {
       next();
     } else {
+      if (req.accepts('html')) {
+        return res.redirect('/login');
+      }
       res.status(403).json({ msg: 'Admin access required' });
     }
   });
