@@ -3655,6 +3655,7 @@ footer {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .hero-banner::before {
