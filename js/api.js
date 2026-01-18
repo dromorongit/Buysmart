@@ -188,10 +188,10 @@ class BuySmartAPI {
           <h3 class="product-name">${product.name}</h3>
           <div class="product-price">${priceHtml}</div>
           <p class="product-description">${product.description.substring(0, 100)}...</p>
-          <button class="add-to-cart-btn" data-product-id="${product._id}" ${addToCartDisabled}>
+          <button class="button add-to-cart-btn" data-product-id="${product._id}" ${addToCartDisabled}>
             ${product.inStock ? 'Add to Cart' : 'Out of Stock'}
           </button>
-          <a href="product-details.html?id=${product._id}" class="view-details-btn">View Details</a>
+          <a href="product-details.html?id=${product._id}" class="button view-details-btn">View Details</a>
         </div>
       </div>
     `;
