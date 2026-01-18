@@ -5,11 +5,19 @@ const cloudinary = require('cloudinary').v2;
 const fs = require('fs');
 
 // Configure Cloudinary
-cloudinary.config({
+const cloudinaryConfig = {
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET
+};
+
+console.log('Cloudinary Config:', {
+  cloud_name: cloudinaryConfig.cloud_name,
+  api_key: cloudinaryConfig.api_key ? '***REDACTED***' : 'NOT SET',
+  api_secret: cloudinaryConfig.api_secret ? '***REDACTED***' : 'NOT SET'
 });
+
+cloudinary.config(cloudinaryConfig);
 
 // Helper function to upload image to Cloudinary
 const uploadToCloudinary = async (filePath, folder = 'products') => {
@@ -19,6 +27,14 @@ const uploadToCloudinary = async (filePath, folder = 'products') => {
       console.error(`File not found: ${filePath}`);
       throw new Error(`File not found: ${filePath}`);
     }
+    
+    // Verify Cloudinary is configured
+    if (!cloudinary.config().api_key) {
+      console.error('Cloudinary API key is not configured');
+      throw new Error('Cloudinary API key is not configured');
+    }
+    
+    console.log('Attempting to upload to Cloudinary:', filePath);
     
     const result = await cloudinary.uploader.upload(filePath, {
       folder,
