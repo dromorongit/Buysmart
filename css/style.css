@@ -1995,6 +1995,11 @@ footer {
         width: 100%;
         height: auto;
         margin-bottom: 1rem;
+        padding: 1rem;
+    }
+
+    .category-card img {
+        height: 120px;
     }
 
     .hero-banner {
