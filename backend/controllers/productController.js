@@ -14,6 +14,12 @@ cloudinary.config({
 // Helper function to upload image to Cloudinary
 const uploadToCloudinary = async (filePath, folder = 'products') => {
   try {
+    // Check if file exists before attempting to upload
+    if (!fs.existsSync(filePath)) {
+      console.error(`File not found: ${filePath}`);
+      throw new Error(`File not found: ${filePath}`);
+    }
+    
     const result = await cloudinary.uploader.upload(filePath, {
       folder,
       public_id: `${Date.now()}-${Math.random().toString(36).substring(2)}`,
@@ -24,6 +30,14 @@ const uploadToCloudinary = async (filePath, folder = 'products') => {
     return result.secure_url;
   } catch (error) {
     console.error('Cloudinary upload error:', error);
+    // Attempt to delete the file if it exists to clean up
+    try {
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      }
+    } catch (cleanupError) {
+      console.error('Error cleaning up file:', cleanupError);
+    }
     throw error;
   }
 };
@@ -43,13 +57,39 @@ const createProduct = async (req, res) => {
     let galleryImages = [];
 
     if (req.files['coverImage']) {
-      coverImage = await uploadToCloudinary(req.files['coverImage'][0].path, 'products/covers');
+      try {
+        coverImage = await uploadToCloudinary(req.files['coverImage'][0].path, 'products/covers');
+      } catch (uploadError) {
+        console.error('Failed to upload cover image:', uploadError);
+        return res.status(500).render('error', {
+          message: 'Failed to upload cover image',
+          error: uploadError,
+          stack: uploadError.stack
+        });
+      }
     }
 
     if (req.files['galleryImages']) {
-      galleryImages = await Promise.all(
-        req.files['galleryImages'].map(file => uploadToCloudinary(file.path, 'products/gallery'))
-      );
+      try {
+        galleryImages = await Promise.all(
+          req.files['galleryImages'].map(file => uploadToCloudinary(file.path, 'products/gallery'))
+        );
+      } catch (uploadError) {
+        console.error('Failed to upload gallery images:', uploadError);
+        // Clean up cover image if it was uploaded
+        if (coverImage) {
+          try {
+            await cloudinary.uploader.destroy(coverImage);
+          } catch (cleanupError) {
+            console.error('Error cleaning up cover image:', cleanupError);
+          }
+        }
+        return res.status(500).render('error', {
+          message: 'Failed to upload gallery images',
+          error: uploadError,
+          stack: uploadError.stack
+        });
+      }
     }
 
     const product = new Product({

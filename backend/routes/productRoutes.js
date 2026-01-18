@@ -4,13 +4,19 @@ const router = express.Router();
 const { check } = require('express-validator');
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
+const fs = require('fs');
 const { adminAuth } = require('../middleware/auth');
 const productController = require('../controllers/productController');
 
 // Multer configuration for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'backend/uploads/');
+    const uploadDir = 'backend/uploads/';
+    // Create directory if it doesn't exist
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+    cb(null, uploadDir);
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + '-' + file.originalname);
