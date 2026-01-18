@@ -862,7 +862,9 @@ nav {
     
     .form-input,
     .form-textarea {
-        padding-left: 3rem;
+        padding-left: 1rem;
+        width: 100%;
+        box-sizing: border-box;
     }
 }
 
