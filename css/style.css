@@ -1996,6 +1996,18 @@ footer {
         height: auto;
         margin-bottom: 1rem;
     }
+
+    .hero-banner {
+        width: 100%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+
+    .hero-content {
+        padding: 0 1rem;
+        box-sizing: border-box;
+    }
 }
 
 /* Modern Enhancements for Buysmart Enterprise */
