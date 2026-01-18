@@ -181,13 +181,12 @@ class BuySmartAPI {
     return `
       <div class="product-card ${stockClass}">
         <div class="product-image">
-          <img src="${product.coverImage}" alt="${product.name}" onerror="this.src='assets/images/placeholder.jpg'">
+          <img src="${product.coverImage}" alt="${product.name}" onerror="this.src='assets/images/placeholder.jpg'" style="object-fit: contain; width: 100%; height: 200px;">
           <div class="product-badges">${badgesHtml}</div>
         </div>
         <div class="product-info">
           <h3 class="product-name">${product.name}</h3>
           <div class="product-price">${priceHtml}</div>
-          <p class="product-description">${product.description.substring(0, 100)}...</p>
           <button class="button add-to-cart-btn" data-product-id="${product._id}" ${addToCartDisabled}>
             ${product.inStock ? 'Add to Cart' : 'Out of Stock'}
           </button>
@@ -219,6 +218,30 @@ class BuySmartAPI {
     
     // Add event listeners to Add to Cart buttons
     this.setupAddToCartListeners();
+  }
+
+  /**
+   * Setup Add to Cart button event listeners
+   */
+  setupAddToCartListeners() {
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const productId = button.getAttribute('data-product-id');
+        
+        // Get product details from the API
+        this.getProductById(productId).then(product => {
+          if (product) {
+            // Call the addToCart function from cart.js
+            if (typeof addToCart === 'function') {
+              addToCart(productId, product.name, product.price, product.coverImage);
+            } else {
+              console.error('addToCart function not found');
+            }
+          }
+        });
+      });
+    });
   }
 
   /**
