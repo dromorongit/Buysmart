@@ -68,6 +68,13 @@ const createProduct = async (req, res) => {
   try {
     const { name, category, price, discountPrice, description, inStock, isFeatured, isPopular, isNew, isOnSale } = req.body;
 
+    // Convert checkbox values to boolean
+    const convertToBoolean = (value) => {
+      if (value === 'on' || value === 'true') return true;
+      if (value === 'off' || value === 'false') return false;
+      return Boolean(value);
+    };
+
     // Handle file uploads to Cloudinary
     let coverImage = '';
     let galleryImages = [];
@@ -116,11 +123,11 @@ const createProduct = async (req, res) => {
       description,
       coverImage,
       galleryImages,
-      inStock,
-      isFeatured,
-      isPopular,
-      isNew,
-      isOnSale
+      inStock: convertToBoolean(inStock),
+      isFeatured: convertToBoolean(isFeatured),
+      isPopular: convertToBoolean(isPopular),
+      isNew: convertToBoolean(isNew),
+      isOnSale: convertToBoolean(isOnSale)
     });
 
     await product.save();
@@ -184,11 +191,11 @@ const updateProduct = async (req, res) => {
     product.price = price || product.price;
     product.discountPrice = discountPrice || product.discountPrice;
     product.description = description || product.description;
-    product.inStock = inStock || product.inStock;
-    product.isFeatured = isFeatured || product.isFeatured;
-    product.isPopular = isPopular || product.isPopular;
-    product.isNew = isNew || product.isNew;
-    product.isOnSale = isOnSale || product.isOnSale;
+    product.inStock = inStock !== undefined ? convertToBoolean(inStock) : product.inStock;
+    product.isFeatured = isFeatured !== undefined ? convertToBoolean(isFeatured) : product.isFeatured;
+    product.isPopular = isPopular !== undefined ? convertToBoolean(isPopular) : product.isPopular;
+    product.isNew = isNew !== undefined ? convertToBoolean(isNew) : product.isNew;
+    product.isOnSale = isOnSale !== undefined ? convertToBoolean(isOnSale) : product.isOnSale;
 
     // Handle file uploads to Cloudinary if present
     if (req.files['coverImage']) {
