@@ -1887,15 +1887,15 @@ footer {
         flex-wrap: wrap;
         gap: 1rem;
     }
-
+    
     .logo img {
         height: 100px;
     }
-
+    
     .hamburger {
         display: flex;
     }
-
+    
     .nav-links {
         display: none;
         width: 100%;
@@ -1908,35 +1908,66 @@ footer {
         margin-top: 1rem;
         overflow: hidden;
     }
-
+    
     .nav-links.active {
         display: flex;
     }
-
+    
     .nav-links a {
         padding: 1rem;
         border-bottom: 1px solid #eee;
         transition: background-color 0.3s ease;
     }
-
+    
     .nav-links a:last-child {
         border-bottom: none;
     }
-
+    
     .nav-links a:hover {
         background-color: #f5f5f5;
         color: #ff0000;
     }
-
+    
     .nav-actions {
         display: flex;
         flex-direction: row;
         gap: 0.5rem;
     }
-
+    
     .search-bar {
         display: none;
     }
+    
+    .nav-actions {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        order: 3;
+    }
+    
+    .follow-icon {
+        order: 2;
+    }
+    
+    .cart-icon {
+        order: 1;
+    }
+    
+    .nav-actions {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        order: 3;
+    }
+    
+    .follow-icon {
+        order: 2;
+    }
+    
+    .cart-icon {
+        order: 1;
+    }
+}
 
     .hero-banner {
         padding: 2rem 1rem;
