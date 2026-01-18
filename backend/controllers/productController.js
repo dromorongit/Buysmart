@@ -68,10 +68,14 @@ const createProduct = async (req, res) => {
     });
 
     await product.save();
-    res.redirect('/dashboard');
+    res.redirect('/products');
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).render('error', {
+      message: 'Failed to create product',
+      error: err,
+      stack: err.stack
+    });
   }
 };
 
