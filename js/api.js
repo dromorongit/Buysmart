@@ -191,7 +191,7 @@ class BuySmartAPI {
             <button class="button add-to-cart-btn" data-product-id="${product._id}" ${addToCartDisabled}>
               ${product.inStock ? 'Add to Cart' : 'Out of Stock'}
             </button>
-            <a href="product-details.html?id=${product._id}" class="button view-details-btn">View Details</a>
+            <a href="product-details.html?id=${product._id}" class="button view-details-btn">View More</a>
           </div>
         </div>
       </div>
