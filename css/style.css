@@ -502,7 +502,7 @@ nav {
 /* Product Grid Styles */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 1.5rem;
     padding: 2rem;
 }
@@ -510,7 +510,7 @@ nav {
 .product-card {
     border: none;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1rem;
     text-align: center;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -535,7 +535,7 @@ nav {
 
 .product-image img {
     width: 100%;
-    height: 200px;
+    height: 150px;
     object-fit: contain;
     border-radius: 8px;
 }
