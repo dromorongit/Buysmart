@@ -177,20 +177,22 @@ class BuySmartAPI {
     const badgesHtml = this.generateProductBadges(product);
     const stockClass = product.inStock ? '' : 'out-of-stock';
     const addToCartDisabled = product.inStock ? '' : 'disabled';
-    
+
     return `
       <div class="product-card ${stockClass}">
         <div class="product-image">
-          <img src="${product.coverImage}" alt="${product.name}" onerror="this.src='assets/images/placeholder.jpg'" style="object-fit: contain; width: 100%; height: 200px;">
+          <img src="${product.coverImage}" alt="${product.name}" onerror="this.src='assets/images/placeholder.jpg'">
           <div class="product-badges">${badgesHtml}</div>
         </div>
         <div class="product-info">
           <h3 class="product-name">${product.name}</h3>
           <div class="product-price">${priceHtml}</div>
-          <button class="button add-to-cart-btn" data-product-id="${product._id}" ${addToCartDisabled}>
-            ${product.inStock ? 'Add to Cart' : 'Out of Stock'}
-          </button>
-          <a href="product-details.html?id=${product._id}" class="button view-details-btn">View Details</a>
+          <div class="product-buttons">
+            <button class="button add-to-cart-btn" data-product-id="${product._id}" ${addToCartDisabled}>
+              ${product.inStock ? 'Add to Cart' : 'Out of Stock'}
+            </button>
+            <a href="product-details.html?id=${product._id}" class="button view-details-btn">View Details</a>
+          </div>
         </div>
       </div>
     `;
