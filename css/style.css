@@ -550,7 +550,7 @@ nav {
 }
 
 .product-info {
-    padding: 0 0.5rem;
+    /* Removed padding to eliminate square card appearance */
 }
 
 .product-name {
