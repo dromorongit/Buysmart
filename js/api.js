@@ -186,9 +186,9 @@ class BuySmartAPI {
           <h3 class="product-name">${product.name}</h3>
           <div class="product-price">${priceHtml}</div>
           <div class="quantity-control">
-            <button class="quantity-btn minus-btn" data-product-id="${product._id}">-</button>
+            <button class="quantity-btn minus-btn" data-product-id="${product._id}" onclick="decreaseQuantity('${product._id}')">-</button>
             <span class="quantity-value" data-product-id="${product._id}">1</span>
-            <button class="quantity-btn plus-btn" data-product-id="${product._id}">+</button>
+            <button class="quantity-btn plus-btn" data-product-id="${product._id}" onclick="increaseQuantity('${product._id}')">+</button>
           </div>
           <div class="product-buttons">
             <button class="button add-to-cart-btn" data-product-id="${product._id}" ${addToCartDisabled}>
@@ -226,6 +226,41 @@ class BuySmartAPI {
   }
 
   /**
+   * Setup quantity control button event listeners using onclick
+   */
+  setupQuantityControlListeners() {
+    // Remove existing listeners to prevent duplicates
+    if (this.handleQuantityClick) {
+      document.removeEventListener('click', this.handleQuantityClick);
+    }
+
+    // Add event delegation for quantity controls
+    this.handleQuantityClick = (e) => {
+      const target = e.target;
+
+      if (target.classList.contains('plus-btn')) {
+        const productId = target.getAttribute('data-product-id');
+        const quantityElement = document.querySelector(`.quantity-value[data-product-id="${productId}"]`);
+        if (quantityElement) {
+          let quantity = parseInt(quantityElement.textContent);
+          quantityElement.textContent = quantity + 1;
+        }
+      } else if (target.classList.contains('minus-btn')) {
+        const productId = target.getAttribute('data-product-id');
+        const quantityElement = document.querySelector(`.quantity-value[data-product-id="${productId}"]`);
+        if (quantityElement) {
+          let quantity = parseInt(quantityElement.textContent);
+          if (quantity > 1) {
+            quantityElement.textContent = quantity - 1;
+          }
+        }
+      }
+    };
+
+    document.addEventListener('click', this.handleQuantityClick);
+  }
+
+  /**
    * Setup Add to Cart button event listeners
    */
   setupAddToCartListeners() {
@@ -249,9 +284,6 @@ class BuySmartAPI {
         }
       });
     });
-
-    // Setup quantity control listeners
-    this.setupQuantityControlListeners();
   }
 
   /**
@@ -334,6 +366,25 @@ document.addEventListener('DOMContentLoaded', () => {
   window.buysmartAPI = new BuySmartAPI();
   window.buysmartAPI.initCart();
 });
+
+// Global functions for quantity controls
+window.increaseQuantity = function(productId) {
+  const quantityElement = document.querySelector(`.quantity-value[data-product-id="${productId}"]`);
+  if (quantityElement) {
+    let quantity = parseInt(quantityElement.textContent);
+    quantityElement.textContent = quantity + 1;
+  }
+};
+
+window.decreaseQuantity = function(productId) {
+  const quantityElement = document.querySelector(`.quantity-value[data-product-id="${productId}"]`);
+  if (quantityElement) {
+    let quantity = parseInt(quantityElement.textContent);
+    if (quantity > 1) {
+      quantityElement.textContent = quantity - 1;
+    }
+  }
+};
 
 // Export for module usage (if needed)
 if (typeof module !== 'undefined' && module.exports) {
