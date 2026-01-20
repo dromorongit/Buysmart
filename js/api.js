@@ -230,75 +230,76 @@ class BuySmartAPI {
    */
   setupAddToCartListeners() {
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-      button.addEventListener('click', (e) => {
+      button.addEventListener('click', async (e) => {
         e.preventDefault();
         const productId = button.getAttribute('data-product-id');
-        
-        // Get product details from the API
-        this.getProductById(productId).then(product => {
-          if (product) {
-            // Call the addToCart function from cart.js
+        const quantityElement = document.querySelector(`.quantity-value[data-product-id="${productId}"]`);
+        const quantity = quantityElement ? parseInt(quantityElement.textContent) : 1;
+
+        // Get product details and add to cart using cart.js function
+        const product = await this.getProductById(productId);
+        if (product) {
+          // Add the product multiple times based on quantity
+          for (let i = 0; i < quantity; i++) {
             if (typeof addToCart === 'function') {
               addToCart(productId, product.name, product.price, product.coverImage);
-            } else {
-              console.error('addToCart function not found');
             }
           }
-        });
+          alert(`${quantity} item(s) added to cart!`);
+        }
       });
     });
+
+    // Setup quantity control listeners
+    this.setupQuantityControlListeners();
   }
 
   /**
-   * Setup Add to Cart button event listeners
+   * Setup quantity control button event listeners using event delegation
    */
-  setupAddToCartListeners() {
-    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const productId = button.getAttribute('data-product-id');
-        this.addToCart(productId);
-      });
-    });
-  }
-
-  /**
-   * Add product to cart (local storage implementation)
-   * @param {string} productId - Product ID to add to cart
-   * @param {number} quantity - Quantity to add (default: 1)
-   */
-  addToCart(productId, quantity = 1) {
-    let cart = JSON.parse(localStorage.getItem('buysmart_cart') || '[]');
-
-    // Check if product is already in cart
-    const existingItem = cart.find(item => item.productId === productId);
-
-    if (existingItem) {
-      existingItem.quantity += quantity;
-    } else {
-      cart.push({ productId, quantity: quantity });
+  setupQuantityControlListeners() {
+    // Remove existing listeners to prevent duplicates
+    if (this.handleQuantityClick) {
+      document.removeEventListener('click', this.handleQuantityClick);
     }
 
-    localStorage.setItem('buysmart_cart', JSON.stringify(cart));
+    // Add event delegation for quantity controls
+    this.handleQuantityClick = (e) => {
+      const target = e.target;
 
-    // Show feedback to user
-    alert(`${quantity} item(s) added to cart!`);
+      if (target.classList.contains('plus-btn')) {
+        const productId = target.getAttribute('data-product-id');
+        const quantityElement = document.querySelector(`.quantity-value[data-product-id="${productId}"]`);
+        if (quantityElement) {
+          let quantity = parseInt(quantityElement.textContent);
+          quantityElement.textContent = quantity + 1;
+        }
+      } else if (target.classList.contains('minus-btn')) {
+        const productId = target.getAttribute('data-product-id');
+        const quantityElement = document.querySelector(`.quantity-value[data-product-id="${productId}"]`);
+        if (quantityElement) {
+          let quantity = parseInt(quantityElement.textContent);
+          if (quantity > 1) {
+            quantityElement.textContent = quantity - 1;
+          }
+        }
+      }
+    };
 
-    // Update cart counter
-    this.updateCartCounter();
+    document.addEventListener('click', this.handleQuantityClick);
   }
+
 
   /**
    * Update cart counter in UI
    */
   updateCartCounter() {
-    const cart = JSON.parse(localStorage.getItem('buysmart_cart') || '[]');
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    
-    const cartCounter = document.querySelector('.cart-counter');
+
+    const cartCounter = document.getElementById('cart-count');
     if (cartCounter) {
       cartCounter.textContent = totalItems;
-      cartCounter.style.display = totalItems > 0 ? 'inline' : 'none';
     }
   }
 
