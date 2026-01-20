@@ -185,12 +185,12 @@ class BuySmartAPI {
         <div class="product-info">
           <h3 class="product-name">${product.name}</h3>
           <div class="product-price">${priceHtml}</div>
-          <div class="quantity-control">
-            <button class="quantity-btn minus-btn" data-product-id="${product._id}" onclick="decreaseQuantity('${product._id}')">-</button>
-            <span class="quantity-value" data-product-id="${product._id}">1</span>
-            <button class="quantity-btn plus-btn" data-product-id="${product._id}" onclick="increaseQuantity('${product._id}')">+</button>
-          </div>
           <div class="product-buttons">
+            <div class="quantity-control">
+              <button class="quantity-btn minus-btn" data-product-id="${product._id}" onclick="decreaseQuantity('${product._id}')">-</button>
+              <span class="quantity-value" data-product-id="${product._id}">1</span>
+              <button class="quantity-btn plus-btn" data-product-id="${product._id}" onclick="increaseQuantity('${product._id}')">+</button>
+            </div>
             <button class="button add-to-cart-btn" data-product-id="${product._id}" ${addToCartDisabled}>
               ${product.inStock ? 'Add to Cart' : 'Out of Stock'}
             </button>
