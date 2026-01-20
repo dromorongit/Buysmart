@@ -502,9 +502,15 @@ nav {
 /* Product Grid Styles */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     padding: 2rem;
+}
+
+@media (min-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .product-card {
