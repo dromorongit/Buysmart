@@ -187,6 +187,11 @@ class BuySmartAPI {
         <div class="product-info">
           <h3 class="product-name">${product.name}</h3>
           <div class="product-price">${priceHtml}</div>
+          <div class="quantity-control">
+            <button class="quantity-btn minus-btn" data-product-id="${product._id}">-</button>
+            <span class="quantity-value" data-product-id="${product._id}">1</span>
+            <button class="quantity-btn plus-btn" data-product-id="${product._id}">+</button>
+          </div>
           <div class="product-buttons">
             <button class="button add-to-cart-btn" data-product-id="${product._id}" ${addToCartDisabled}>
               ${product.inStock ? 'Add to Cart' : 'Out of Stock'}
@@ -262,24 +267,25 @@ class BuySmartAPI {
   /**
    * Add product to cart (local storage implementation)
    * @param {string} productId - Product ID to add to cart
+   * @param {number} quantity - Quantity to add (default: 1)
    */
-  addToCart(productId) {
+  addToCart(productId, quantity = 1) {
     let cart = JSON.parse(localStorage.getItem('buysmart_cart') || '[]');
-    
+
     // Check if product is already in cart
     const existingItem = cart.find(item => item.productId === productId);
-    
+
     if (existingItem) {
-      existingItem.quantity += 1;
+      existingItem.quantity += quantity;
     } else {
-      cart.push({ productId, quantity: 1 });
+      cart.push({ productId, quantity: quantity });
     }
-    
+
     localStorage.setItem('buysmart_cart', JSON.stringify(cart));
-    
+
     // Show feedback to user
-    alert('Product added to cart!');
-    
+    alert(`${quantity} item(s) added to cart!`);
+
     // Update cart counter
     this.updateCartCounter();
   }
