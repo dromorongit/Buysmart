@@ -141,31 +141,29 @@ class BuySmartAPI {
  }
 
   /**
-   * Generate product badge HTML
-   * @param {Object} product - Product object
-   * @returns {string} HTML for product badges
-   */
-  generateProductBadges(product) {
-    const badges = [];
-    
-    if (product.isFeatured) {
-      badges.push('<span class="badge featured">FEATURED</span>');
-    }
-    
-    if (product.isNew) {
-      badges.push('<span class="badge new">NEW</span>');
-    }
-    
-    if (product.isOnSale) {
-      badges.push('<span class="badge sale">SALE</span>');
-    }
-    
-    if (!product.inStock) {
-      badges.push('<span class="badge out-of-stock">OUT OF STOCK</span>');
-    }
-    
-    return badges.join(' ');
-  }
+    * Generate product badge HTML
+    * @param {Object} product - Product object
+    * @returns {string} HTML for product badges
+    */
+   generateProductBadges(product) {
+     let badges = '';
+
+     // Featured badge is intentionally excluded as per user request
+
+     if (product.isNew) {
+       badges += '<span class="badge new">NEW</span>';
+     }
+
+     if (product.isOnSale) {
+       badges += '<span class="badge sale">SALE</span>';
+     }
+
+     if (!product.inStock) {
+       badges += '<span class="badge out-of-stock">OUT OF STOCK</span>';
+     }
+
+     return badges;
+   }
 
   /**
    * Generate product card HTML

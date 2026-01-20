@@ -543,10 +543,20 @@ nav {
 .product-badges {
     position: absolute;
     top: 10px;
+    width: 100%;
+    pointer-events: none;
+}
+
+.product-badges .badge.new {
+    position: absolute;
+    top: 0;
     left: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+}
+
+.product-badges .badge.sale {
+    position: absolute;
+    top: 0;
+    right: 10px;
 }
 
 .product-info {
@@ -3862,6 +3872,9 @@ footer {
 }
 
 .product-badges .badge.out-of-stock {
+    position: absolute;
+    top: 40px;
+    left: 10px;
     background: linear-gradient(135deg, #666, #999);
     color: white;
 }
