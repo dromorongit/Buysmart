@@ -2145,6 +2145,48 @@ footer {
 
 /* Modern Enhancements for Buysmart Enterprise */
 
+/* Call To Order Banner Styles */
+.call-to-order-banner {
+    background: linear-gradient(135deg, #ff6b35, #ff0000);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+}
+
+.call-banner-content h2 {
+    margin: 0 0 0.5rem;
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.call-banner-content p {
+    margin: 0 0 1.5rem;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.call-button {
+    background: white;
+    color: #ff0000;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.call-button:hover {
+    background: #f8f8f8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
 /* Promotional Banner Styles */
 .promo-banner {
     background: linear-gradient(135deg, #ff0000, #ffcc00);
