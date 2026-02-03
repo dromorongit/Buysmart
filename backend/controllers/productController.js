@@ -187,7 +187,7 @@ const updateProduct = async (req, res) => {
 
     // Update fields
     product.name = name || product.name;
-    product.category = category || product.category;
+    product.category = category ? (Array.isArray(category) ? category : [category]) : product.category;
     product.price = price || product.price;
     product.discountPrice = discountPrice || product.discountPrice;
     product.description = description || product.description;
